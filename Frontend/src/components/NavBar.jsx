@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import navLogo from "../assets/navLogo.png"; // Updated the import to your filename
+import navLogo from "../assets/navLogo.png";
 
 const navLinks = [
   { to: "/about", label: "About Us" },
@@ -12,37 +12,41 @@ const navLinks = [
 
 const Navbar = () => {
   return (
-    <nav className="bg-[#232323] ">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-16 py-10 px-1">
+    <nav className="sticky top-0 z-50 bg-[#000000]/78 backdrop-blur-xl border-b border-white/10 transition-all">
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-16 py-11 px-1">
         {/* Logo */}
-        <div className="flex relative right-10 items-center">
+        <div className="flex bottom-1 relative left-[-25px] items-center">
           <NavLink to="/home">
             <img
               src={navLogo}
               alt="Social Turtle Logo"
-              className="h-18 w-auto"
+              className="h-44 w-50"
               style={{ objectFit: "contain" }}
             />
           </NavLink>
         </div>
+
         {/* Navigation Links */}
-        <div className="flex items-center gap-18">
+        <div className="flex items-center gap-14">
           {navLinks.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `text-white font-medium transition-colors ${
-                  isActive ? 'text-[#bada55]' : 'hover:text-[#bada55]'
+                `text-white text-[19px] font-light transition-colors ${
+                  isActive ? "text-[#bada55]" : "hover:text-[#bada55]"
                 }`
               }
+              style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               {item.label}
             </NavLink>
           ))}
+
           <NavLink
             to="/contact"
-            className="ml-4 bg-[#bada55] font-semibold px-7 py-2 rounded-full text-[#232323] hover:bg-[#a7c84d] transition-colors"
+            className="ml-4 bg-[#A0CB3A] text-[19px] font-[450] px-9 py-4 rounded-full text-[#232323] hover:bg-[#a7c84d] transition-colors"
+            style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             Contact Us
           </NavLink>
