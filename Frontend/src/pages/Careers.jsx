@@ -11,6 +11,7 @@ import {
 import { Upload, X } from "lucide-react";
 import { useState } from "react";
 import groupImg from "../assets/group.png";
+import Positions from "../components/careersPageSection/Positions";
 
 export default function Careers() {
   const [file, setFile] = useState(null);
@@ -84,6 +85,8 @@ export default function Careers() {
           />
         </div>
       </section>
+
+      <Positions></Positions>
 
       {/* Application Form */}
       <section className="px-6 py-16 ">

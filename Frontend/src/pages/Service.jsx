@@ -6,17 +6,12 @@ const Service = () => {
     <main className="bg-white">
       {/* Page container */}
       <div className="mx-auto w-full max-w-[1180px] px-4 sm:px-6 lg:px-8">
-
         {/* Page title */}
         <header className="pt-8 sm:pt-14 text-center">
-          <h1
+          <h1 className="text-5xl leading-[1.06] tracking-[0.1px] font-normal"
             style={{
               fontFamily: "Calisga, serif",
-              fontWeight: 400,
-              fontSize: "clamp(30px, 5vw, 56px)",
-              lineHeight: 1.06,
-              letterSpacing: "0.1px",
-              color: "#A0CB3A", // exact lime
+              color: "#A0CB3A",
             }}
           >
             Branding & Packaging
@@ -24,16 +19,13 @@ const Service = () => {
         </header>
 
         {/* Hero split */}
-        <section className="mt-8 sm:mt-10 lg:mt-18 grid grid-cols-1 lg:grid-cols-[minmax(0,490px)_minmax(0,1fr)] gap-10 lg:gap-19 items-start">
+        <section className="mt-8 sm:mt-10 lg:mt-18 leading-[1.38] text-[29px] grid grid-cols-1 lg:grid-cols-[minmax(0,490px)_minmax(0,1fr)] gap-10 lg:gap-19 items-start">
           {/* Left copy */}
           <div className="order-2 lg:order-1">
             <div className="max-w-[760px]">
-              <h2
+              <h2 className="font-bold"
                 style={{
                   fontFamily: "Montserrat, sans-serif",
-                  fontWeight: 700,
-                  fontSize: "clamp(24px, 3.2vw, 29px)",
-                  lineHeight: 1.38,
                   color: "#0E0E0E",
                 }}
               >
@@ -43,11 +35,9 @@ const Service = () => {
               </h2>
 
               <p
-                className="mt-5 sm:mt-6"
+                className="mt-5 sm:mt-6 text-[20px] leading-[1.42]"
                 style={{
                   fontFamily: "Montserrat, sans-serif",
-                  fontSize: "20px",
-                  lineHeight: 1.42,
                   color: "#000000",
                 }}
               >
@@ -68,11 +58,7 @@ const Service = () => {
             <img
               src={rolexImg}
               alt="Branding and packaging visual"
-              className="mx-auto lg:ml-0 object-cover"
-              style={{
-                width: "clamp(320px, 44vw, 730px)",
-                aspectRatio: "4 / 3",
-              }}
+              className="mx-auto lg:ml-0 w-[730px] object-cover"
             />
           </figure>
         </section>
@@ -85,3 +71,4 @@ const Service = () => {
 };
 
 export default Service;
+
