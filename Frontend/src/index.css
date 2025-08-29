@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+/* Add this @font-face rule */
+@font-face {
+  font-family: 'Calisga';
+  src: url('./assets/fonts/calisga-calisga-400.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
