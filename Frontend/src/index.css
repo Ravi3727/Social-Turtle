@@ -1,15 +1,9 @@
 @import "tailwindcss";
 
-  @font-face {
-    font-family: 'Helvetica Neue';
-    src: url('./public/fonts/HelveticaNeueBold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Calisga';
-    src: url('./public/fonts/calisga-calisga-400.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-  }
+/* Add this @font-face rule */
+@font-face {
+  font-family: 'Calisga';
+  src: url('./assets/fonts/calisga-calisga-400.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
