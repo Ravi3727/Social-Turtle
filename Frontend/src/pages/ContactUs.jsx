@@ -33,7 +33,7 @@ const FaqItem = ({ faq, index, openIndex, setOpenIndex }) => {
     <div className="py-6 border-b border-gray-200">
       <button
         onClick={handleToggle}
-        className="flex justify-between items-center w-full text-left"
+        className="flex justify-between items-center cursor-pointer w-full text-left"
       >
         <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
         <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white flex-shrink-0">
@@ -58,7 +58,7 @@ const ContactUs = () => {
 
   return (
     // Main container to center the content on the page
-    <div className='min-h-screen bg-white flex items-center justify-center font-sans'>
+    <div className='min-h-screen bg-white flex items-center justify-center mt-20 font-sans'>
       <div className='w-full max-w-7xl mx-auto p-8'>
         <Contact />
 
@@ -80,20 +80,20 @@ const ContactUs = () => {
       <div className='flex flex-col md:flex-row gap-16 items-start'>
         
         {/* Left Side: Title */}
-        <div className='w-full md:w-1/3 text-left' style={{fontFamily: 'Calisga, sans-serif'}}>
-          <h2 className='text-6xl font-bold text-black'>
+        <div className='w-full md:w-1/3 mt-16 text-left' style={{fontFamily: 'Calisga, sans-serif'}}>
+          <h2 className='text-5xl font-bold text-black'>
             Frequently
           </h2>
-          <h2 className='text-6xl font-bold text-black'>
+          <h2 className='text-5xl font-bold text-black'>
             Asked
           </h2>
-          <h2 className='text-7xl font-bold text-[#94be4c] mt-2'>
+          <h2 className='text-5xl font-bold text-[#94be4c] mt-2'>
             Questions
           </h2>
         </div>
         
         {/* Right Side: Accordion */}
-        <div className='w-full md:w-2/3'>
+        <div className='w-full md:w-2/3' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight:500 }}>
           {faqData.map((faq, index) => (
             <FaqItem
               key={index}
