@@ -1,5 +1,6 @@
 import React from "react";
 import rolexImg from "../assets/rolex.png";
+import OurWork from "./OurWork";
 
 const Service = () => {
   return (
@@ -66,7 +67,9 @@ const Service = () => {
         {/* Optional: subtle spacer to separate from next section */}
         <div className="h-10 sm:h-12 lg:h-14" />
       </div>
+      <OurWork/>
     </main>
+    
   );
 };
 

@@ -14,6 +14,11 @@ import groupImg from "../assets/group.png";
 import Positions from "../components/careersPageSection/Positions";
 
 export default function Careers() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [position, setPosition] = useState("developer");
+  const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -24,6 +29,58 @@ export default function Careers() {
 
   const handleRemoveFile = () => {
     setFile(null);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // 🔍 DEBUG: Log all current state values
+    console.log("=== FORM DEBUG ===");
+    console.log("Name:", name, "| Empty?", !name);
+    console.log("Email:", email, "| Empty?", !email);
+    console.log("Phone:", phone, "| Empty?", !phone);
+    console.log("Position:", position, "| Empty?", !position);
+    console.log("File:", file, "| Missing?", !file);
+    console.log("File name:", file?.name);
+    console.log("================");
+
+    if (!name || !email || !phone || !position || !file) {
+      alert("Please fill in all required fields and upload your CV.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("position", position);
+    formData.append("message", message);
+    formData.append("cv", file); // 👈 must match multer field name in backend
+
+    try {
+      const res = await fetch("http://localhost:5000/api/careers/apply", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("Application submitted successfully!");
+        console.log(data);
+
+        // Reset form
+        setName("");
+        setEmail("");
+        setPhone("");
+        setPosition("developer");
+        setMessage("");
+        setFile(null);
+      } else {
+        alert("Failed to submit application: " + data.message);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again later.");
+    }
   };
 
   return (
@@ -89,15 +146,17 @@ export default function Careers() {
       <Positions></Positions>
 
       {/* Application Form */}
-      <section className="px-6 py-16 ">
-        <div className="max-w-[1120px] mx-auto grid md:grid-cols-2 gap-12 items-start">
+      <section className="px-6 py-16">
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-[1120px] mx-auto grid md:grid-cols-2 gap-12 items-start"
+        >
           <div>
             <h2
-              className="text-4xl font-bold text-gray-900 mb-6"
+              className="text-4xl leading-[1.56] font-bold text-gray-900 mb-6"
               style={{
                 fontFamily: "Calisga, serif",
                 fontWeight: 350,
-                lineHeight: 1.56,
               }}
             >
               Ready to be a part of
@@ -105,12 +164,10 @@ export default function Careers() {
               the Turtle Tribe?
             </h2>
             <p
-              className="text-gray-600 text-lg"
+              className="text-gray-600 leading-[1.56] text-[19px] text-lg"
               style={{
                 fontFamily: "Montserrat, sans-serif",
                 fontWeight: 500,
-                lineHeight: 1.56,
-                fontSize: 19,
               }}
             >
               Fill out the form below and let's build
@@ -122,57 +179,47 @@ export default function Careers() {
           <div className="space-y-10">
             <Input
               placeholder="Name"
-              className="border-0 border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border-0 leading-[1.56] text-[19px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontWeight: 550,
-                lineHeight: 1.56,
-                fontSize: 19,
+                fontWeight: 450,
               }}
             />
             <Input
               placeholder="Email"
               type="email"
-              className="border-0 border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontWeight: 550,
-                lineHeight: 1.56,
-                fontSize: 19,
+                fontWeight: 450,
               }}
+              className="border-0 leading-[1.56] text-[19px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
             />
             <Input
               placeholder="Phone no."
               type="tel"
-              className="border-0 border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontWeight: 550,
-                lineHeight: 1.56,
-                fontSize: 19,
+                fontWeight: 450,
               }}
+              className="border-0 leading-[1.56] text-[19px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
             />
-            <Select>
+            <Select value={position} onValueChange={setPosition}>
               <SelectTrigger
-                className="border-0 border-b text-gray-500 border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
+                className="border-0 border-b text-gray-500 border-gray-300 cursor-pointer leading-[1.56] text-[19px] rounded-none bg-transparent pb-3 focus:border-lime-400"
                 style={{
                   fontFamily: "Montserrat, sans-serif",
-                  fontWeight: 550,
-                  lineHeight: 1.56,
-                  fontSize: 19,
+                  fontWeight: 450,
                 }}
               >
-                <SelectValue placeholder="Position"></SelectValue>
+                <SelectValue className="text-black" />
               </SelectTrigger>
-              <SelectContent
-                className="z-50 bg-white"
-                style={{
-                  fontFamily: "Montserrat, sans-serif",
-                  fontWeight: 550,
-                  lineHeight: 1.56,
-                  fontSize: 19,
-                }}
-              >
+              <SelectContent className="z-50 leading-[1.56] text-[19px] bg-white">
                 <SelectItem value="designer">Product Designer</SelectItem>
                 <SelectItem value="developer">Developer</SelectItem>
                 <SelectItem value="marketing">Marketing Specialist</SelectItem>
@@ -180,33 +227,37 @@ export default function Careers() {
             </Select>
             <Textarea
               placeholder="Message"
-              className="border-0 border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400 resize-none"
-              rows={2}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontWeight: 550,
-                lineHeight: 1.56,
-                fontSize: 19,
+                fontWeight: 450,
               }}
+              className="border-0 leading-[1.56] text-[19px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400 resize-none"
+              rows={2}
             />
 
             {/* File Upload */}
             <div className="flex items-stretch">
-              {/* Hidden input */}
               <label className="cursor-pointer">
                 <input
                   type="file"
-                  accept=".pdf"
+                  accept=".pdf,.doc,.docx"
                   className="hidden"
                   onChange={handleFileChange}
                 />
-                <span className="bg-black text-white px-8 py-4 flex items-center h-full">
+                <span
+                  className="bg-black text-white px-8 py-4 flex items-center h-full"
+                  style={{
+                    fontFamily: "Montserrat, sans-serif",
+                    fontWeight: 450,
+                  }}
+                >
                   <Upload className="mr-2 h-6 w-6" />
                   Upload CV
                 </span>
               </label>
 
-              {/* File name display with remove option */}
               {file ? (
                 <div className="flex items-center justify-center border border-gray-400 px-4 py-3 text-gray-700 max-w-[220px]">
                   <span className="truncate flex-1">{file.name}</span>
@@ -219,24 +270,26 @@ export default function Careers() {
                   </button>
                 </div>
               ) : (
-                <span className="border border-gray-400 px-5 py-3 text-gray-400 w-[180px] truncate">
+                <span
+                  className="border text-center border-gray-400 px-5 py-3 text-gray-400 w-[180px] truncate"
+                  style={{
+                    fontFamily: "Montserrat, sans-serif",
+                    fontWeight: 450,
+                  }}
+                >
                   No file chosen
                 </span>
               )}
             </div>
 
             <Button
-              className="bg-[#a1ca3a] text-black px-22 py-7 rounded-full cursor-pointer active:scale-90 transition "
-              style={{
-                fontFamily: "Montserrat,sans-serif",
-                fontWeight: 450,
-                fontSize: 19,
-              }}
+              type="submit"
+              className="bg-[#a1ca3a] text-black px-22 py-7 rounded-full cursor-pointer active:scale-90 transition"
             >
               Submit
             </Button>
           </div>
-        </div>
+        </form>
       </section>
     </div>
   );

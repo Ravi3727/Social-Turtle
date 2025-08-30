@@ -108,9 +108,9 @@ const OurWork = () => {
             className="text-5xl font-bold text-black mb-4 font-serif"
             style={{ fontFamily: "Calisga, sans-serif" }}
           >
-            Our Work
+            Our Work 
           </h1>
-          <p className="max-w-3xl mx-auto text-gray-600">
+          <p className="max-w-3xl mx-auto text-gray-600" style={{ fontFamily: "Montserrat", fontWeight:400 }}>
             Lorem ipsum dolor sit amet consectetur. Lorem praesent ultricies
             viverra sit maecenas commodo. Pretium amet ligula neque est sit.
             Ultrices amet viverra rutrum id volutpat mattis ac. Sapien lacus
@@ -121,12 +121,12 @@ const OurWork = () => {
         {/* Filtering Navigation Section */}
         <section className="mb-12">
           <nav>
-            <ul className="flex items-center justify-center flex-wrap gap-x-6 gap-y-4">
+            <ul className="flex items-center justify-center flex-wrap gap-x-6 gap-y-4 " style={{ fontFamily: 'Montserrat, sans-serif' }}>
               {filterCategories.map((category) => (
                 <li key={category}>
                   <button
                     onClick={() => setActiveFilter(category)}
-                    className={`font-semibold text-sm tracking-wider pb-2 transition-all duration-300 ${
+                    className={`font-semibold text-sm tracking-wider pb-2 cursor-pointer transition-all duration-300 ${
                       activeFilter === category
                         ? "text-[#94be4c] border-b-2 border-[#94be4c]"
                         : "text-gray-700 hover:text-[#94be4c]"
