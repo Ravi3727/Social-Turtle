@@ -17,6 +17,7 @@ const Home = () => {
 <AiVideosSection/>
 <Clientele/>
 <Testimonials/>
+<TurtleBlogs/>
 
 </>
   )
