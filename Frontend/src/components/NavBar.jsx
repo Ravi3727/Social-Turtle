@@ -12,7 +12,7 @@ const navLinks = [
 
 const Navbar = () => {
   return (
-    <nav className="bg-[#232323] ">
+    <nav className="bg-[#000000]  fixed z-50 w-screen">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 py-10 px-1">
         {/* Logo */}
         <div className="flex relative right-10 items-center">
