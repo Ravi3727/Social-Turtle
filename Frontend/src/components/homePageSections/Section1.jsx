@@ -7,14 +7,14 @@ const Section1 = () => {
       {/* Content */}
       <div className="text-center absolute z-20  text-white flex flex-col gap-6 w-3/5">
         {/* Headline */}
-        <h1 className="text-5xl md:text-6xl font-semibold leading-snug">
+        <h1 className="text-[56px] md:text-6xl font-semibold leading-snug">
           Grow Your Business with{" "}
           <span className="text-[#A0CB3A]">Result-Driven</span> Digital
           Marketing Services
         </h1>
 
         {/* Subtext */}
-        <p className="text-gray-300 text-sm md:text-lg leading-relaxed">
+        <p className="text-gray-300 text-[20px] font-extralight  leading-tight">
           Boost your online visibility, generate quality leads, and increase ROI
           with our expert SEO, social media, and paid marketing strategies.
         </p>
