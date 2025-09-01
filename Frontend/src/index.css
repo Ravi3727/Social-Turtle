@@ -7,3 +7,10 @@
   font-weight: 200;
   font-style: normal;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.cursor-ring {
+  box-shadow: 0 0 0 2px #A0CB3A inset;
+  mix-blend-mode: difference;
+}
