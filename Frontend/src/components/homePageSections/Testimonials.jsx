@@ -3,18 +3,24 @@ import Testimonialscard from './Testimonialscard'
 
 const Testimonials = () => {
   return (
-     <div className='w-screen  h-[90vh] flex flex-col pt-10  items-center  '>
-     <div className='flex flex-col w-screen  font-bold text-[49px] items-center justify-center  text-center'>
+     <div  className='w-screen  h-fit flex flex-col pt-10  items-center gap-6 pb-10 '>
+     <div className='flex flex-col w-screen  font-bold text-[49px] items-center justify-center  gap-4 text-center'>
               
-                <div className='text-[#A0CB3A]'>Testimonials</div>
-                  <div className='text-[20px] mt-4 font-extralight w-1/2 '>
+                <div style={{
+              fontFamily: "Calisga, serif",
+           
+            }} className='text-[#A0CB3A]'>Testimonials</div>
+                  <div style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  
+                }} className='text-[20px] mt-4 font-extralight w-1/2 '>
                     Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.
                 </div>
                 </div>
-                <div className="w-full h-fit  py-2 flex items-center gap-6 
-                overflow-x-auto scrollbar-hide px-4 scroll-smooth snap-x snap-mandatory">
+                <div className="w-full h-fit  py-10 flex items-center gap-6 
+                overflow-x-scroll scrollbar-hide px-4 ">
   {[...Array(6)].map((_, i) => (
-    <div key={i} className="flex-shrink-0 snap-center w-72">
+    <div key={i} className="flex-shrink-0  ">
       <Testimonialscard />
     </div>
   ))}

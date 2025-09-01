@@ -3,7 +3,10 @@ import React from 'react'
 
 const Testimonialscard = () => {
     return (
-        <div className='border-[#000000] border-[0.2px] w-[532px] h-[376px] py-6 flex flex-col items-center   rounded-lg ' >
+        <div style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  
+                }} className='border-[#000000] border-[0.2px] w-[532px] h-[376px] py-6 flex flex-col items-center   rounded-lg ' >
             <div className='flex justify-start w-[80%]'>
                 <Quote />
             </div>

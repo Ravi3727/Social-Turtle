@@ -4,7 +4,10 @@ import { motion } from "framer-motion"
 const Clientele = () => {
   return (
     <div className='w-screen h-[90vh]  flex flex-col pt-10 items-center  '>
-      <div className='text-[49px] text-center mt-10 text-black font-extrabold '>Clientele</div>
+      <div  style={{
+              fontFamily: "Calisga, serif",
+           
+            }}className='text-[49px] text-center mt-10 text-black font-extrabold '>Clientele</div>
       <div className='min-w-full relative flex flex-col justify-center items-center h-[90%]  overflow-clip'>
         <motion.div
           className="flex"
