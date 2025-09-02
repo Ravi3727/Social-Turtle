@@ -41,14 +41,14 @@ useEffect(() => {
 }, [cursorX, cursorY]);
 
   return (
-    <div ref={ref}  className="w-screen  min-h-screen bg-black flex flex-col justify-center items-center relative overflow-hidden px-6 py-10">
+    <div ref={ref}  className="w-screen  min-h-screen cursor-none bg-black flex flex-col justify-center items-center relative overflow-hidden px-6 py-10">
       {/* Content */}
       <div className="text-center  z-20  text-white flex flex-col gap-6 w-4/5">
         {/* Headline */}
         <h1 style={{
               fontFamily: "Calisga, serif",
            
-            }} className="text-[56px] md:text-6xl font-semibold leading-snug">
+            }} className=" text-[28px] md:text-[56px]  font-semibold leading-snug">
           Grow Your Business with{" "}
           <span className="text-[#A0CB3A]">Result-Driven</span> Digital
           Marketing Services
@@ -58,7 +58,7 @@ useEffect(() => {
         <p  style={{
                   fontFamily: "Montserrat, sans-serif",
                   
-                }} className="text-[#FFFFFF] text-[20px] font-extralight  leading-tight">
+                }} className="text-[#FFFFFF] text-[14px] md:text-[20px] font-extralight  leading-tight">
           Boost your online visibility, generate quality leads, and increase ROI
           with our expert SEO, social media, and paid marketing strategies.
         </p>
@@ -67,9 +67,20 @@ useEffect(() => {
         <div style={{
                   fontFamily: "Montserrat, sans-serif",
                   
-                }} className="flex justify-center mt-3 text-[24px]">
+                }} className="flex justify-center text-[20px] mt-10 md:text-[24px]">
           <motion.button ref={btnref} whileHover={{ scale: 1.1 }}
-  whileTap={{ scale: 0.95 }} className="flex  items-center gap-2 bg-[#A0CB3A] justify-center  text-black font-medium  w-[246px] h-[86px] text-center rounded-full hover:bg-[#8fb832] transition">
+  whileTap={{ scale: 0.95 }}  onMouseMove={(e) => {
+    const rect = btnref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2; 
+    const y = e.clientY - rect.top - rect.height / 2; 
+
+   
+    btnref.current.style.transform = `translate(${x / 3}px, ${y / 3}px) scale(1.1)`;
+  }}
+  onMouseLeave={() => {
+    // Reset on leave
+    btnref.current.style.transform = "translate(0px, 0px) scale(1)";
+  }} className="flex  items-center gap-2 bg-[#A0CB3A] justify-center  text-black font-medium  w-[246px] h-[86px] text-center rounded-full hover:bg-[#8fb832] transition">
             Discover Us <ArrowUpRight className="w-6 h-6" />
           </motion.button>
         </div>

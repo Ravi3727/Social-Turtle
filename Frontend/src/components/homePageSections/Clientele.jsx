@@ -13,7 +13,7 @@ const Clientele = () => {
           className="flex"
           animate={{ x: ["0%", "-100%", "0%"] }} // move left continuously
           transition={{
-            duration: 10,
+            duration: 20,
             repeat: Infinity,
             ease: "linear",
           }}
@@ -27,7 +27,7 @@ const Clientele = () => {
         <motion.div className="flex"
           animate={{ x: ["-100%", "0%", "-100%"] }}
           transition={{
-            duration: 10,
+            duration: 20,
             repeat: Infinity,
             ease: "linear"
           }}
@@ -41,7 +41,7 @@ const Clientele = () => {
           className="flex"
           animate={{ x: ["0%", "-100%", "0%"] }} // move left continuously
           transition={{
-            duration: 10,
+            duration: 20,
             repeat: Infinity,
             ease: "linear",
           }}

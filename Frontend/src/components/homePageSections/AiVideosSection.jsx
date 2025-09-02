@@ -1,5 +1,6 @@
 import React, { useEffect, useRef,useState } from 'react'
 import {motion} from "framer-motion"
+import CurvedCarousel from './CurvedCarousel';
 const AiVideosSection = () => {
 
 const images = [
@@ -13,13 +14,12 @@ const images = [
 ];
 const [photos, setPhotos] = useState(images)
 const cenRef = useRef(null);
-const getCurveStyle = (index, centerIndex) => {
-    const distanceFromCenter = Math.abs(index - centerIndex);
-    const maxDistance = Math.floor(images.length / 2);
-    const scaley = 0.6+ (distanceFromCenter * 0.1); // Scale decreases from 1 to 0.6 as distance increases
-    // Vertical offset increases with distance (adjust 50 for curve height)
-    return  {scale: Math.max(0.6, scaley)} ; // Minimum scale of 0.6
-  };
+function getCurveStyle(i, mid) {
+  const diff = Math.abs(i - mid);
+  // Closer to center => larger scale
+  const scale = 1 - diff * 0.15;
+  return { scale: Math.max(scale, 0.5) };
+}
  
 
     return (
@@ -39,7 +39,7 @@ const getCurveStyle = (index, centerIndex) => {
                 </div>
            
 
-     <motion.div className='flex relative justify-between items-center gap-6 '  // move left continuously
+     {/* <motion.div className='flex relative justify-between items-center gap-6 '  // move left continuously
           transition={{
             duration: 10,
             repeat: Infinity,
@@ -74,7 +74,10 @@ const getCurveStyle = (index, centerIndex) => {
       })}
     
 
-     </motion.div>
+     </motion.div> */}
+     <div>
+<CurvedCarousel images={images} />
+     </div>
   
         </div>
     )

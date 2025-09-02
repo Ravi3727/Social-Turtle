@@ -13,7 +13,7 @@ const Testimonials = () => {
                   <div style={{
                   fontFamily: "Montserrat, sans-serif",
                   
-                }} className='text-[20px] mt-4 font-extralight w-1/2 '>
+                }} className='text-[20px] mt-4 font-extralight w-1/2 md:block hidden '>
                     Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.
                 </div>
                 </div>
