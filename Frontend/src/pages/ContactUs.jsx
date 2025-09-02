@@ -1,7 +1,7 @@
 import {useState} from 'react';
 // Importing icons from the react-icons library
 import { FiPlus, FiMinus } from 'react-icons/fi';
-import Contact from '../components/Contact';
+import Contact from '../components/Contact'; // Assuming this component is already responsive
 
 const faqData = [
   {
@@ -35,7 +35,8 @@ const FaqItem = ({ faq, index, openIndex, setOpenIndex }) => {
         onClick={handleToggle}
         className="flex justify-between items-center cursor-pointer w-full text-left"
       >
-        <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
+        {/* Responsive text size for the question */}
+        <h3 className="text-base md:text-lg font-medium text-gray-800 pr-4">{faq.question}</h3>
         <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white flex-shrink-0">
           {isOpen ? <FiMinus /> : <FiPlus />}
         </div>
@@ -57,18 +58,18 @@ const ContactUs = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    // Main container to center the content on the page
-    <div className='min-h-screen bg-white flex items-center justify-center mt-20 font-sans'>
-      <div className='w-full max-w-7xl mx-auto p-8'>
+    // Main container with responsive margin and padding
+    <div className='min-h-screen bg-white flex items-center justify-center mt-10 md:mt-20 font-sans'>
+      <div className='w-full max-w-7xl mx-auto p-4 sm:p-8'>
         <Contact />
 
-        {/* --- NEW: Map Section --- */}
-        <section className='mt-20'>
+        {/* Map Section with responsive margin */}
+        <section className='mt-16 md:mt-20'>
           <div className='w-full'>
-            {/* Google Maps Embed using an iframe */}
+            {/* Responsive map height */}
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.701198463251!2d77.21019617527663!3d28.63870178430737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd7754582a97%3A0x8a03c519d44890f!2sSadar%20Thana%20Road%2C%20Bazar%20Sadar%2C%20Delhi%2C%20110006!5e0!3m2!1sen!2sin!4v1724504897813!5m2!1sen!2sin" 
-                className='w-full h-[450px] border-0 rounded-lg shadow-md'
+                className='w-full h-[350px] md:h-[450px] border-0 rounded-lg shadow-md'
                 allowFullScreen="" 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
@@ -76,37 +77,40 @@ const ContactUs = () => {
           </div>
         </section>
 
-        <section className='w-full py-20'>
-      <div className='flex flex-col md:flex-row gap-16 items-start'>
-        
-        {/* Left Side: Title */}
-        <div className='w-full md:w-1/3 mt-16 text-left' style={{fontFamily: 'Calisga, sans-serif'}}>
-          <h2 className='text-5xl font-bold text-black'>
-            Frequently
-          </h2>
-          <h2 className='text-5xl font-bold text-black'>
-            Asked
-          </h2>
-          <h2 className='text-5xl font-bold text-[#94be4c] mt-2'>
-            Questions
-          </h2>
-        </div>
-        
-        {/* Right Side: Accordion */}
-        <div className='w-full md:w-2/3' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight:500 }}>
-          {faqData.map((faq, index) => (
-            <FaqItem
-              key={index}
-              index={index}
-              faq={faq}
-              openIndex={openIndex}
-              setOpenIndex={setOpenIndex}
-            />
-          ))}
-        </div>
+        {/* FAQ Section with responsive padding and layout */}
+        <section className='w-full py-16 md:py-20'>
+          {/* Stacks vertically on mobile, row on medium screens+ */}
+          <div className='flex flex-col md:flex-row gap-8 md:gap-16 items-start'>
+            
+            {/* Left Side: Title */}
+            <div className='w-full md:w-1/3 text-center md:text-left' style={{fontFamily: 'Calisga, sans-serif'}}>
+              {/* Responsive font sizes for the title */}
+              <h2 className='text-4xl md:text-5xl font-bold text-black'>
+                Frequently
+              </h2>
+              <h2 className='text-4xl md:text-5xl font-bold text-black'>
+                Asked
+              </h2>
+              <h2 className='text-4xl md:text-5xl font-bold text-[#94be4c] mt-2'>
+                Questions
+              </h2>
+            </div>
+            
+            {/* Right Side: Accordion */}
+            <div className='w-full md:w-2/3 mt-8 md:mt-0' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight:500 }}>
+              {faqData.map((faq, index) => (
+                <FaqItem
+                  key={index}
+                  index={index}
+                  faq={faq}
+                  openIndex={openIndex}
+                  setOpenIndex={setOpenIndex}
+                />
+              ))}
+            </div>
 
-      </div>
-    </section>
+          </div>
+        </section>
       </div>
     </div>
   );

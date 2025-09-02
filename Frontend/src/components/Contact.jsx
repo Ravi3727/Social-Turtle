@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const {
@@ -12,7 +13,6 @@ const Contact = () => {
 
   // This function will only be called if validation passes
   const onSubmit = async(data) => {
-    // 🔍 LOG: Show form data before sending
     console.log("=== FORM DATA SUBMITTED ===");
     console.log("Form Data:", data);
     console.log("============================");
@@ -27,19 +27,17 @@ const Contact = () => {
         });
         
         const response = await res.json();
-        
-        // 🔍 LOG: Show server response
         console.log("Server Response:", response);
         
         if(response.success) {
-            alert('Thank you for your message! We\'ll get back to you soon.');
+            toast.success('Thank you for your message! We\'ll get back to you soon.');
             reset();
         } else {
-            alert('Error: ' + response.message);
+            toast.error('Error: ' + response.message);
         }
     } catch(error) {
         console.error('Network error:', error);
-        alert('Network error. Please check your connection and try again.');
+        toast.error('Network error. Please check your connection and try again.');
     }
 };
 
