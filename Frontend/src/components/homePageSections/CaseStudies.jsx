@@ -16,10 +16,10 @@ const CaseStudies = () => {
  const [visible, setVisible] = useState(true);
   const timeoutRef = useRef(null);
 
-  const img1Y = useTransform(sc.scrollYProgress, [0, 0.25], ["100%", "0%"]);
-  const img2Y = useTransform(sc.scrollYProgress, [0.25, 0.5],["100%", "0%"]);
-  const img3Y = useTransform(sc.scrollYProgress, [0.5, 0.75],["100%", "0%"]);
-  const img4Y = useTransform(sc.scrollYProgress, [0.75, 1], ["100%", "0%"]);
+  const img1Y = useTransform(sc.scrollYProgress, [0, 0.25], ["150%", "0%"]);
+  const img2Y = useTransform(sc.scrollYProgress, [0.25, 0.5],["150%", "0%"]);
+  const img3Y = useTransform(sc.scrollYProgress, [0.5, 0.75],["150%", "0%"]);
+  const img4Y = useTransform(sc.scrollYProgress, [0.75, 1], ["150%", "0%"]);
 
 
 useEffect(() => {
@@ -61,12 +61,12 @@ useEffect(() => {
         <div style={{
               fontFamily: "Calisga, serif",
            
-            }} className='font-bold text-[49px] text-center'>Case Studies</div>
+            }} className='font-bold text-[28px] md:text-[49px]  text-center'>Case Studies</div>
    <motion.div ref={animRef} className="w-full sticky top-0 flex flex-col items-center h-[570px] overflow-clip">
-  <motion.img style={{ scale, translateY: img1Y }} transition={{duration:1,type:"easeIn",delay:0.2}} src="/images/mountain.png" className="w-[95%] h-[554px] mt-6 object-cover" alt="" />
-  <motion.img style={{ scale, translateY: img2Y }} transition={{duration:1,type:"easeIn",delay:0.2}} src="/images/mountain.png" className="w-[95%] absolute h-[554px] mt-6 object-cover" alt="" />
-  <motion.img style={{ scale, translateY: img3Y }} transition={{duration:1,type:"easeIn",delay:0.2}} src="/images/mountain.png" className="w-[95%] absolute h-[554px] mt-6 object-cover" alt="" />
-  <motion.img style={{ scale, translateY: img4Y }} transition={{duration:1,type:"easeIn",delay:0.2}} src="/images/mountain.png" className="w-[95%] absolute h-[554px] mt-6 object-cover" alt="" />
+  <motion.img style={{ scale, translateY: img1Y }} transition={{duration:1,type:"easeIn",delay:0.2}} src="/images/mountain.png" className="w-[359px] md:w-[95%] md:h-[554px] h-[400px] rounded-2xl mt-6 object-cover" alt="" />
+  <motion.img style={{ scale, translateY: img2Y }} transition={{duration:1,type:"easeIn",delay:0.2}} src="/images/mountain.png" className="w-[359px] md:w-[95%] absolute md:h-[554px] h-[400px] rounded-2xl mt-6 object-cover" alt="" />
+  <motion.img style={{ scale, translateY: img3Y }} transition={{duration:1,type:"easeIn",delay:0.2}} src="/images/mountain.png" className="w-[359px] md:w-[95%] absolute md:h-[554px] h-[400px] rounded-2xl mt-6 object-cover" alt="" />
+  <motion.img style={{ scale, translateY: img4Y }} transition={{duration:1,type:"easeIn",delay:0.2}} src="/images/mountain.png" className="w-[359px] md:w-[95%] absolute md:h-[554px] h-[400px] rounded-2xl mt-6 object-cover" alt="" />
 </motion.div>
       <motion.div
   style={{ x: cursorX, y: cursorY, opacity: visible ? 1 : 0, }}

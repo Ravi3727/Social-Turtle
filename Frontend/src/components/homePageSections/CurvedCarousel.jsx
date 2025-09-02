@@ -88,7 +88,7 @@ const CurvedImageCarousel = () => {
   }, [isTransitioning]);
 
   return (
-    <div className="w-screen h-screen  text-white overflow-hidden relative">
+    <div className="w-screen h-[80vh]  text-white overflow-hidden relative">
       <div className="flex items-center justify-center w-full h-full">
         <div
           ref={containerRef}

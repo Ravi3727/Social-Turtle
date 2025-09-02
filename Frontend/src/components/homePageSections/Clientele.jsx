@@ -3,11 +3,11 @@ import { motion } from "framer-motion"
 
 const Clientele = () => {
   return (
-    <div className='w-screen h-[90vh]  flex flex-col pt-10 items-center  '>
+    <div className='w-screen h-[70vh]   flex flex-col justify-between items-center   '>
       <div  style={{
               fontFamily: "Calisga, serif",
            
-            }}className='text-[49px] text-center mt-10 text-black font-extrabold '>Clientele</div>
+            }}className=' text-[28px] md:text-[49px] text-center mt-10 text-black font-extrabold '>Clientele</div>
       <div className='min-w-full relative flex flex-col justify-center items-center h-[90%]  overflow-clip'>
         <motion.div
           className="flex"
@@ -54,6 +54,7 @@ const Clientele = () => {
         </motion.div>
         <div className="absolute w-full h-[100%] inset-0 bg-radial from-[rgb(0,0,0,0)] to-[#ffffff] to 100% pointer-events-none"></div>
       </div>
+      
     </div>
 
   )
