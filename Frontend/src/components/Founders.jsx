@@ -2,13 +2,13 @@ import React from 'react';
 import FounderSlider from './FounderSlider';
 import "../index.css";
 
-import founder3_normal from '../assets/leftPerson.png';
-import founder3_hover from '../assets/animateLeft.png';
-import founder1_normal from '../assets/midGirl.png';
-import founder1_hover from '../assets/animateGirl.png';
-import founder2_normal from '../assets/rightPerson.png';
-import founder2_hover from '../assets/animateRight.png';
-import wavyBackground from '../assets/vector.png';
+import founder1_normal from '../assets/founders/founder1_normal.png';
+import founder1_hover from '../assets/founders/founder1_hover.png';
+import founder2_normal from '../assets/founders/founder2_normal.png';
+import founder2_hover from '../assets/founders/founder2_hover.png';
+import founder3_normal from '../assets/founders/founder3_normal.png';
+import founder3_hover from '../assets/founders/founder3_hover.png';
+import wavyBackground from '../assets/founders/wavy_background.png';
 
 const founders = [
     {
