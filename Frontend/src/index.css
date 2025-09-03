@@ -7,3 +7,107 @@
   font-weight: 200;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('./assets/fonts/HelveticaNeue-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('./assets/fonts/HelveticaNeue-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('./assets/fonts/HelveticaNeue-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('./assets/fonts/HelveticaNeue-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 640px) {
+  .animate-scroll {
+    animation-duration: 15s;
+  }
+}
+
+.inline-marker {
+  position: relative;
+  display: inline-block;
+  line-height: 1.25;
+  padding: 0 .15em;
+}
+
+.inline-marker::after {
+  content: "";
+  position: absolute;
+  left: -0.25em;
+  right: -0.25em;
+  bottom: -0.1em;
+  height: 0.9em;
+  transform: rotate(-2deg);
+  background: #a0cb3a;
+  filter: saturate(110%) brightness(1.02);
+  border-radius: 8px 10px 8px 10px;
+  z-index: -1;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.cursor-ring {
+  box-shadow: 0 0 0 2px #A0CB3A inset;
+  mix-blend-mode: difference;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 27s linear infinite;
+  width: max-content; /* ensures it scrolls naturally */
+}
+
+@keyframes foundersSlider {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.founders-slider {
+  display: flex;
+  animation: foundersSlider 30s linear infinite; /* speed can be adjusted */
+  width: max-content;
+}
