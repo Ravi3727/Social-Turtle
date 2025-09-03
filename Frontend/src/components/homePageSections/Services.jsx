@@ -7,8 +7,8 @@ const Services = () => {
     <div style={{
               fontFamily: "Calisga, serif",
            
-            }} className='text-[49px] text-center  font-bold'>Services</div>
-<div className="w-full scrollbar-hide mx-auto flex flex-wrap gap-6 overflow-scroll justify-center">
+            }} className=' text-[28px] md:text-[49px] text-center  font-bold'>Services</div>
+<div className="w-full scrollbar-hide mx-auto flex md:flex-wrap gap-6 overflow-scroll justify-center">
         <ServicesCard/>
         <ServicesCard/>
         <ServicesCard/>

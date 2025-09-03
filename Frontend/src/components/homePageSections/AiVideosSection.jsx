@@ -1,5 +1,6 @@
 import React, { useEffect, useRef,useState } from 'react'
 import {motion} from "framer-motion"
+import CurvedCarousel from './CurvedCarousel';
 const AiVideosSection = () => {
 
 const images = [
@@ -13,13 +14,12 @@ const images = [
 ];
 const [photos, setPhotos] = useState(images)
 const cenRef = useRef(null);
-const getCurveStyle = (index, centerIndex) => {
-    const distanceFromCenter = Math.abs(index - centerIndex);
-    const maxDistance = Math.floor(images.length / 2);
-    const scaley = 0.6+ (distanceFromCenter * 0.1); // Scale decreases from 1 to 0.6 as distance increases
-    // Vertical offset increases with distance (adjust 50 for curve height)
-    return  {scale: Math.max(0.6, scaley)} ; // Minimum scale of 0.6
-  };
+function getCurveStyle(i, mid) {
+  const diff = Math.abs(i - mid);
+  // Closer to center => larger scale
+  const scale = 1 - diff * 0.15;
+  return { scale: Math.max(scale, 0.5) };
+}
  
 
     return (
@@ -27,19 +27,19 @@ const getCurveStyle = (index, centerIndex) => {
                   fontFamily: "Montserrat, sans-serif",
                   
                 }} className='min-h-screen flex flex-col gap-6 h-fit w-screen py-10 overflow-clip'>
-            <div className='flex flex-col w-screen  font-bold text-[56px] items-center justify-center leading-tight  text-center'>
+            <div className='flex flex-col w-screen  font-bold text-[28px] md:text-[56px] items-center justify-center leading-tight  text-center'>
                 <div>Engage Audience with Stunning</div>
                 <div style={{
               fontFamily: "Calisga, serif",
            
             }} className='text-[#A0CB3A]'>AI Generated Videos</div>
-                  <div className='text-[20px] mt-4 font-extralight w-1/2 '>
+                  <div className='text-[20px] mt-4 font-extralight w-1/2 md:block hidden '>
                     Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.
                 </div>
                 </div>
            
 
-     <motion.div className='flex relative justify-between items-center gap-6 '  // move left continuously
+     {/* <motion.div className='flex relative justify-between items-center gap-6 '  // move left continuously
           transition={{
             duration: 10,
             repeat: Infinity,
@@ -74,7 +74,10 @@ const getCurveStyle = (index, centerIndex) => {
       })}
     
 
-     </motion.div>
+     </motion.div> */}
+     <div>
+<CurvedCarousel images={images} />
+     </div>
   
         </div>
     )
