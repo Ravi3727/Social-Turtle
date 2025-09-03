@@ -14,3 +14,33 @@
   box-shadow: 0 0 0 2px #A0CB3A inset;
   mix-blend-mode: difference;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 27s linear infinite;
+  width: max-content; /* ensures it scrolls naturally */
+}
+
+@keyframes foundersSlider {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.founders-slider {
+  display: flex;
+  animation: foundersSlider 30s linear infinite; /* speed can be adjusted */
+  width: max-content;
+}
