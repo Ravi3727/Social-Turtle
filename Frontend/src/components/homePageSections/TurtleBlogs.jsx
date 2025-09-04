@@ -3,7 +3,7 @@ import TurtleBlogsCard from './TurtleBlogsCard'
 
 const TurtleBlogs = () => {
   return (
-    <div className="w-full min-h-[90vh] flex flex-col items-center mt-4 gap-4">
+    <div className="w-full h-fit flex flex-col items-center mt-4 gap-4">
       {/* Header */}
       <div className="flex flex-col w-full font-bold  text-[28px] md:text-[49px]  items-center justify-center text-center">
       <div style={{
@@ -21,7 +21,7 @@ const TurtleBlogs = () => {
       </div>
 
       {/* Horizontal scroll cards */}
-      <div className="flex w-full overflow-x-scroll min-h-fit py-10 scrollbar-hide gap-6 px-4 justify-center items-center">
+      <div className="flex w-full overflow-x-scroll min-h-fit py-6  scrollbar-hide gap-6 px-4 justify-center items-center">
         <div className="flex-shrink-0"><TurtleBlogsCard /></div>
         <div className="flex-shrink-0"><TurtleBlogsCard /></div>
         <div className="flex-shrink-0"><TurtleBlogsCard /></div>

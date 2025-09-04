@@ -17,7 +17,7 @@ const Testimonials = () => {
                     Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.
                 </div>
                 </div>
-                <div className="w-full h-fit  py-10 flex items-center gap-6 
+                <div className="w-full h-fit  py-6 flex items-center gap-6 
                 overflow-x-scroll scrollbar-hide px-4 ">
   {[...Array(6)].map((_, i) => (
     <div key={i} className="flex-shrink-0  ">
