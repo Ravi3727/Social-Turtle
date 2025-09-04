@@ -11,36 +11,33 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  // This function will only be called if validation passes
-  const onSubmit = async(data) => {
-    console.log("=== FORM DATA SUBMITTED ===");
-    console.log("Form Data:", data);
-    console.log("============================");
-
+  const onSubmit = async (data) => {
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     try {
-        const res = await fetch('http://localhost:5000/api/contacts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-        
-        const response = await res.json();
-        console.log("Server Response:", response);
-        
-        if(response.success) {
-            toast.success('Thank you for your message! We\'ll get back to you soon.');
-            reset();
-        } else {
-            toast.error('Error: ' + response.message);
-        }
-    } catch(error) {
-        console.error('Network error:', error);
-        toast.error('Network error. Please check your connection and try again.');
-    }
-};
+      const res = await fetch(`${BACKEND_URL}/contacts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
+      const response = await res.json();
+      console.log("Server Response:", response);
+
+      if (response.success) {
+        toast.success(
+          "Thank you for your message! We'll get back to you soon."
+        );
+        reset();
+      } else {
+        toast.error("Error: " + response.message);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      toast.error("Network error. Please check your connection and try again.");
+    }
+  };
 
   return (
     <section className="flex flex-col md:flex-row justify-between items-start gap-16">

@@ -12,6 +12,7 @@ import { Upload, X } from "lucide-react";
 import { useState } from "react";
 import groupImg from "../assets/group.png";
 import Positions from "../components/careersPageSection/Positions";
+import { toast } from "react-toastify";
 
 export default function Careers() {
   const [name, setName] = useState("");
@@ -54,17 +55,17 @@ export default function Careers() {
     formData.append("phone", phone);
     formData.append("position", position);
     formData.append("message", message);
-    formData.append("cv", file); // 👈 must match multer field name in backend
-
+    formData.append("cv", file);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     try {
-      const res = await fetch("http://localhost:5000/api/careers/apply", {
+      const res = await fetch(`${BACKEND_URL}/careers/apply`, {
         method: "POST",
         body: formData,
       });
 
       const data = await res.json();
       if (res.ok) {
-        alert("Application submitted successfully!");
+        toast.success("Application submitted successfully!");
         console.log(data);
 
         // Reset form
@@ -75,11 +76,11 @@ export default function Careers() {
         setMessage("");
         setFile(null);
       } else {
-        alert("Failed to submit application: " + data.message);
+        toast.error("Failed to submit application: " + data.message);
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Something went wrong. Please try again later.");
+      // console.error("Error submitting form:", error);
+      toast.error("Something went wrong. Please try again later.");
     }
   };
 
