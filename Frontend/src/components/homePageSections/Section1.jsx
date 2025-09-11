@@ -7,7 +7,7 @@ const Section1 = () => {
     const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
  const [visible, setVisible] = useState(true);
- const [anime, setAnime] = useState(false);
+
  const [curScale, setCurScale] = useState(1)
 
 const { scrollYProgress } = useScroll({
@@ -15,10 +15,12 @@ const { scrollYProgress } = useScroll({
     offset: ["start end", "end start"], 
   });
 
-  const topPos = useTransform(scrollYProgress, [0.5, 0.6], ['45px', '45px']); // 2/3 to 0
-const leftPos = useTransform(scrollYProgress, [0.5, 0.6], ['50%', '50%']); // 3/5 to 0
+  const bottomPos = useTransform(scrollYProgress, [0.5, 0.6], ['10%', '0%']); 
 
-const hei = useTransform(scrollYProgress, [0.5, 0.6], ['0vh','100vh']);
+
+const hei = useTransform(scrollYProgress, [0.5, 0.6], ["0px", `${Math.max(window.innerHeight, 700)}px`
+]);
+
 const wid = useTransform(scrollYProgress, [0.5, 0.6], ['0vw','100vw']);
 const round=useTransform(scrollYProgress, [0.5, 0.6], ['100%','0']);
 const clipPath = useTransform(
@@ -74,43 +76,39 @@ useEffect(() => {
 }, [cursorX, cursorY]);
 
   
-    const smoothScrollTo = (targetY, duration = 3000) => {
-        const startY = window.scrollY;
-        const distance = targetY - startY;
-        const startTime = performance.now();
+const smoothScrollTo = (targetY, duration = 2000) => {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
 
-        function step(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function (ease-in-out)
-            const ease = progress < 0.5 
-                ? 2 * progress * progress 
-                : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-            
-            window.scrollTo(0, startY + distance * ease);
-            
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            }
-        }
-        
-        requestAnimationFrame(step);
-    };
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
 
-    useEffect(() => {
-        if(anime){
-            smoothScrollTo(window.innerHeight, 3000); // 3 seconds
-            setAnime(false);
-        }
-    }, [anime])
+    // Ease-in-out curve
+    const ease =
+      progress < 0.5
+        ? 2 * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+    window.scrollTo(0, startY + distance * ease);
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+};
+
+    
 
 
   return (
     
-    <motion.div ref={ref}  style={{  color: textColor }}  className={`w-screen bg-black h-[90vh] md:h-screen cursor-none  flex flex-col justify-center items-center relative overflow-hidden px-6 `}>
+    <motion.div ref={ref}  style={{  color: textColor }}  className={`w-screen  bg-black min-h-[700px] h-screen  cursor-none  flex flex-col justify-center items-center relative overflow-hidden px-6 `}>
     
-      <div className="text-center  z-40  h-fit top-[20%] flex flex-col gap-6 w-3/5  absolute md:w-full lg:w-4/5">
+      <div className="text-center  z-40  h-fit sm:top-[10%] top-[15%] flex flex-col items-center gap-6 w-3/5  absolute md:w-full lg:w-4/5">
         {/* Headline */}
         <motion.h1 style={{
               fontFamily: "Calisga, serif",
@@ -128,7 +126,7 @@ useEffect(() => {
         <p  style={{
                   fontFamily: "Montserrat, sans-serif",
                      color: textColor, 
-                }} className={`text-[14px] md:text-[20px] font-extralight  leading-tight`}>
+                }} className={`text-[14px] md:text-[20px] md:w-2/3 font-extralight  leading-tight`}>
           Boost your online visibility, generate quality leads, and increase ROI
           with our expert SEO, social media, and paid marketing strategies.
         </p>
@@ -142,19 +140,18 @@ useEffect(() => {
  <div style={{
                   fontFamily: "Montserrat, sans-serif",
                   
-                }} className="flex absolute top-[55%] z-10 md:top-[60%] -translate-x-[50%]  justify-center text-[20px] mt-10 md:text-[24px]">
+                }} className=" relative h-screen w-screen min-h-[700px]  z-10       text-[20px]  md:text-[24px]">
                  
                  <motion.div 
                  style={{
           width: wid,
           height: hei,
-          top: topPos,
-          left: leftPos,
+          bottom: bottomPos, 
           borderRadius: round,
           clipPath: clipPath,
-          transform: "translate(-50%, -50%)",
+        
         }}
-                className="absolute  z-10 bg-[#ffffff]"
+                className="absolute   left-1/2 -translate-x-1/2 z-10 bg-white"
             />
       
           <motion.button ref={btnref}   style={{
@@ -164,8 +161,8 @@ useEffect(() => {
     // ✅ Framer controls scale now
   }}
  
-   whileHover={{ scale:!anime?1.1:1 }}
-  whileTap={{ scale: 1.5 }}  // ✅ Works now
+   
+  whileTap={{ scale: 2.5 }}  // ✅ Works now
  transition={{ duration: 0.3 }}
   onMouseMove={(e) => {
     const rect = btnref.current.getBoundingClientRect();
@@ -174,14 +171,17 @@ useEffect(() => {
     x.set(offsetX / 3);
     y.set(offsetY / 3);
   }}
-  onClick={()=>{
-   setAnime(true);
-  }}
+onClick={() => {
+  if (ref.current) {
+    const targetY =  ref.current.offsetHeight; 
+    smoothScrollTo(targetY, 2000); // scroll whole section in 2s
+  }
+}}
   
   onMouseLeave={() => {
     // Reset on leave
     btnref.current.style.transform = "translate(0px, 0px) scale(1)";
-  }} className="flex  items-center gap-2 bg-[#A0CB3A] justify-center absolute z-20   text-black font-medium  w-[246px] h-[86px] text-center rounded-full hover:bg-[#8fb832] transition">
+  }} className="flex scale-150 items-center gap-2 bottom-[15%] left-1/2 -translate-x-1/2 bg-[#A0CB3A] justify-center absolute z-20 px-2  text-black font-medium  md:w-[246px] md:h-[86px] sm:h-[95px] sm:w-[200px] h-[70px] w-[150px] rounded-4xl text-center sm:rounded-full hover:bg-[#8fb832] transition">
             Discover Us <ArrowUpRight className="w-6 h-6" />
           </motion.button>
         </div>
@@ -193,7 +193,7 @@ useEffect(() => {
 
       {/* Turtle illustration (absolute positioned bottom-right) */}
       <img
-        src={"/images/turtle.png"} // replace with your turtle image path
+        src={"/images/turtle.png"} 
         alt="Turtle illustration"
         className={`absolute top-[60%] md:top-[50%] z-0  right-0 w-64 md:w-96 opacity-90`}
       />

@@ -58,36 +58,41 @@ useEffect(() => {
 
   return (
     
-    <div ref={ref}  className='bg-[#F6F6F6] w-screen h-[80vh] md:h-[90vh] relative overflow-clip  pt-10 pb-10  flex  gap-6 flex-col items-center'>
+    <div ref={ref}  className='bg-[#F6F6F6] w-screen h-fit  relative overflow-clip  pt-10 pb-10  flex  gap-6 flex-col items-center'>
         <div style={{
               fontFamily: "Calisga, serif",
            
             }} className='font-bold text-[28px] md:text-[49px]  text-center'>Case Studies</div>
 
 
- <div className='w-full h-[120vh] relative '>
+ <div className='w-full h-fit py-6  flex items-center justify-center relative overflow-clip '>
         {/* Sticky pinned images */}
-        <div ref={animRef} className='sticky top-5 h-screen flex flex-col items-center  overflow-hidden'>
+        <div ref={animRef} className='sticky  w-screen  h-fit flex flex-col items-center justify-center  overflow-hidden'>
+          <img
+           
+            src="/images/mountain.png"
+            className="w-[95%]   hidden   rounded-2xl mt-6 object-cover"
+          />
           <motion.img
             style={{ scale, y: img1Y }}
             src="/images/mountain.png"
-            className="w-[359px] md:w-[95%] md:h-[554px] h-[400px] rounded-2xl mt-6 object-cover"
+            className="w-[90%] md:w-[95%] h-[] md:h-auto  rounded-2xl mt-6 object-cover"
           />
           <motion.img
             style={{ scale, y: img2Y }}
             src="/images/mountain.png"
-            className="w-[359px] md:w-[95%] md:h-[554px] h-[400px] rounded-2xl absolute mt-6 object-cover"
+            className="w-[90%] md:w-[95%]   rounded-2xl absolute mt-6 object-cover"
           />
           <motion.img
             style={{ scale, y: img3Y }}
             src="/images/mountain.png"
-            className="w-[359px] md:w-[95%] md:h-[554px] h-[400px] rounded-2xl absolute mt-6 object-cover"
+            className="w-[90%] md:w-[95%]   rounded-2xl absolute mt-6 object-cover"
           />
-          <motion.img
+          {/* <motion.img
             style={{ scale, y: img4Y }}
             src="/images/mountain.png"
             className="w-[359px] md:w-[95%] md:h-[554px] h-[400px] rounded-2xl absolute mt-6 object-cover"
-          />
+          /> */}
         </div>
       </div>
 

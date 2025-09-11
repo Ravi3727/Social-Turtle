@@ -31,18 +31,18 @@ const CurvedImageCarousel = () => {
     }
 
     // curve parameters
-    const radius = 1000; // bigger radius for full-screen coverage
-    const angle = position * 25;
+    const radius = 1400; // bigger radius for full-screen coverage
+    const angle = position * 15;
     const radians = (angle * Math.PI) / 180;
 
     const x = Math.sin(radians) * radius+10;
-    const z = Math.cos(radians) * radius - radius;
+    const z = Math.cos(radians) * radius - radius*1.5;
     const rotY = -angle;
 
     const distance = Math.abs(position);
 
     // ✅ Center is smallest, sides get larger
-    let scale = 0.8 + Math.min(distance * 0.15, 0.8);
+    let scale = 0.8 + Math.min(distance * 0.10, 0.8);
     let opacity = 1;
 
     // hide images going too far
@@ -88,20 +88,21 @@ const CurvedImageCarousel = () => {
   }, [isTransitioning]);
 
   return (
-    <div className="w-screen h-[60vh] md:h-[80vh]  text-white overflow-hidden relative">
-      <div className="flex items-center justify-center w-full h-full">
+    <div  className="w-screen h-fit  flex items-start text-white overflow-x-hidden relative">
+     
         <div
           ref={containerRef}
-          className="relative  flex gap-2 w-full h-full"
+          className="relative flex items-center justify-center overflow-y-clip w-full min-h-[606px] h-full"
           style={{
-            perspective: "2500px",
+            perspective: "6000px",
             perspectiveOrigin: "center 50%",
+                transformStyle: "preserve-3d",
           }}
         >
           {images.map((image, index) => (
             <div
               key={index}
-              className="absolute w-[300px] h-[604px] cursor-pointer left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="absolute w-[300px] h-[604px] cursor-pointer left-1/2  -translate-x-1/2 "
               style={{
                 ...getImageStyle(index),
                 transformStyle: "preserve-3d",
@@ -117,7 +118,7 @@ const CurvedImageCarousel = () => {
             </div>
           ))}
         </div>
-      </div>
+   
 
       
     </div>
