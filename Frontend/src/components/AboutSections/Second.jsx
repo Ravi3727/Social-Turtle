@@ -26,13 +26,13 @@ const Second = () => {
         {/* Text Section */}
         <div className="text-center mb-10 sm:mb-14">
         <h2
-            className="text-3xl sm:text-4xl lg:text-[52px] font-bold text-black mb-4 leading-[100%] tracking-[0%]"
+            className="text-[28px] sm:text-4xl lg:text-[52px] font-bold text-black mb-4 leading-[100%] tracking-[0%]"
             style={{ fontFamily: "Calisga, serif", fontWeight: 400 }}
         >
-            Think Deep, Move Smart
+            Think Deep, <br/> Move Smart
         </h2>
           <p
-            className="text-gray-700 text-sm sm:text-base lg:text-lg mt-10 max-w-3xl mx-auto leading-[100%]"
+            className="text-gray-700 text-[16px] sm:text-[20px] lg:text-[20px] mt-10 max-w-3xl mx-auto  leading-[100%] tracking-[0%]"
             style={{ fontFamily: "Montserrat, sans-serif", fontWeight:400 }}
           >
             We're Social Turtle — a creative marketing and advertising agency
@@ -41,7 +41,7 @@ const Second = () => {
             From planning to execution, we craft digital experiences that stick.
           </p>
           <p
-            className="text-gray-700 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-[100%] mt-4"
+            className="text-gray-700 text-[16px] sm:text-[20px] lg:text-[20px] max-w-3xl mx-auto  leading-[100%] tracking-[0%] mt-4"
             style={{ fontFamily: "Montserrat, sans-serif", fontWeight:400 }}
           >
             Fueled by big ideas, bolder chai, and creative chaos, our team

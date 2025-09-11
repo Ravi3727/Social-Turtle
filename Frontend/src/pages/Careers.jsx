@@ -89,42 +89,43 @@ export default function Careers() {
       <section className="py-16 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <h1
-            className="text-4xl text-gray-900 mb-4"
+            className="text-[28px] sm:text-3xl md:text-5xl lg:text-6xl text-gray-900 mb-2 whitespace-nowrap"
             style={{
               fontFamily: "Helvetica Neue, Arial, sans-serif",
               fontWeight: 700,
-              fontSize: 55,
             }}
           >
             Join Our Team & Build
           </h1>
+
           <h2
-            className="text-4xl md:text-6xl font-bold text-lime-400 mt-8 mb-8"
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold md:mt-6 mb-6 whitespace-nowrap"
             style={{
               fontFamily: "Calisga, serif",
               color: "#a1ca3a",
-              fontWeight: 350,
+              fontWeight: 400,
             }}
           >
             The Future Together
           </h2>
+
           <p
-            className="text-gray-600 text-xl mb-8 max-w-2xl mx-auto"
+            className="text-gray-600 text-base sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto"
             style={{
-              fontFamily: "Montserrat,sans-serif",
+              fontFamily: "Montserrat, sans-serif",
               fontWeight: 450,
-              fontSize: 19,
             }}
           >
             Lorem ipsum dolor sit amet consectetur. Lorem praesent ultricies
             viverra sit maecenas commodo. Pretium amet ligula n
           </p>
+
           <Button
-            className="bg-[#a1ca3a] text-black px-10 py-6 rounded-full "
+            className="bg-[#a1ca3a] text-black px-8 py-4 rounded-full"
             style={{
-              fontFamily: "Montserrat,sans-serif",
-              fontWeight: 450,
-              fontSize: 19,
+              fontFamily: "Montserrat, sans-serif",
+              fontWeight: 500,
+              fontSize: 18,
             }}
           >
             Explore Positions
@@ -153,7 +154,7 @@ export default function Careers() {
         >
           <div>
             <h2
-              className="text-4xl leading-[1.56] font-bold text-gray-900 mb-6"
+              className="text-[28px] md:text-[42px] leading-[1.56] font-bold text-gray-900 mb-6"
               style={{
                 fontFamily: "Calisga, serif",
                 fontWeight: 350,
@@ -164,7 +165,7 @@ export default function Careers() {
               the Turtle Tribe?
             </h2>
             <p
-              className="text-gray-600 leading-[1.56] text-[19px] text-lg"
+              className="text-gray-600 leading-[1.56] md:text-[20px]  text-[16px]"
               style={{
                 fontFamily: "Montserrat, sans-serif",
                 fontWeight: 500,
@@ -181,7 +182,7 @@ export default function Careers() {
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="border-0 leading-[1.56] text-[19px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
+              className="border-0 leading-[1.56] text-[16px] md:text-[20px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
               style={{
                 fontFamily: "Montserrat, sans-serif",
                 fontWeight: 450,
@@ -196,7 +197,7 @@ export default function Careers() {
                 fontFamily: "Montserrat, sans-serif",
                 fontWeight: 450,
               }}
-              className="border-0 leading-[1.56] text-[19px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
+              className="border-0 leading-[1.56] text-[16px] md:text-[20px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
             />
             <Input
               placeholder="Phone no."
@@ -207,11 +208,11 @@ export default function Careers() {
                 fontFamily: "Montserrat, sans-serif",
                 fontWeight: 450,
               }}
-              className="border-0 leading-[1.56] text-[19px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
+              className="border-0 leading-[1.56] md:text-[20px] text-[16px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400"
             />
             <Select value={position} onValueChange={setPosition}>
               <SelectTrigger
-                className="border-0 border-b text-gray-500 border-gray-300 cursor-pointer leading-[1.56] text-[19px] rounded-none bg-transparent pb-3 focus:border-lime-400"
+                className="border-0 border-b md:text-[20px] text-gray-500 border-gray-300 cursor-pointer leading-[1.56] text-[16px] rounded-none bg-transparent pb-3 focus:border-lime-400"
                 style={{
                   fontFamily: "Montserrat, sans-serif",
                   fontWeight: 450,
@@ -219,7 +220,7 @@ export default function Careers() {
               >
                 <SelectValue className="text-black" />
               </SelectTrigger>
-              <SelectContent className="z-50 leading-[1.56] text-[19px] bg-white">
+              <SelectContent className="z-50 leading-[1.56] md:text-[20px] text-[16px] bg-white">
                 <SelectItem value="designer">Product Designer</SelectItem>
                 <SelectItem value="developer">Developer</SelectItem>
                 <SelectItem value="marketing">Marketing Specialist</SelectItem>
@@ -233,61 +234,71 @@ export default function Careers() {
                 fontFamily: "Montserrat, sans-serif",
                 fontWeight: 450,
               }}
-              className="border-0 leading-[1.56] text-[19px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400 resize-none"
+              className="border-0 leading-[1.56] md:text-[20px] text-[16px] border-b border-gray-300 rounded-none bg-transparent pb-3 focus:border-lime-400 resize-none"
               rows={2}
             />
 
             {/* File Upload */}
-            <div className="flex items-stretch">
-              <label className="cursor-pointer">
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  className="hidden"
-                  onChange={handleFileChange}
-                />
-                <span
-                  className="bg-black text-white px-8 py-4 flex items-center h-full"
-                  style={{
-                    fontFamily: "Montserrat, sans-serif",
-                    fontWeight: 450,
-                  }}
-                >
-                  <Upload className="mr-2 h-6 w-6" />
-                  Upload CV
-                </span>
-              </label>
-
-              {file ? (
-                <div className="flex items-center justify-center border border-gray-400 px-4 py-3 text-gray-700 max-w-[220px]">
-                  <span className="truncate flex-1">{file.name}</span>
-                  <button
-                    type="button"
-                    onClick={handleRemoveFile}
-                    className="ml-2 text-gray-500 hover:text-black cursor-pointer"
+            <div className="w-full flex justify-center md:justify-start">
+              <div className="flex flex-col md:flex-row items-center md:items-stretch gap-3">
+                <label className="cursor-pointer">
+                  <input
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+                  <span
+                    className="bg-black text-white px-8 py-2 md:py-3 flex text-[14px] items-center h-full"
+                    style={{
+                      fontFamily: "Montserrat, sans-serif",
+                      fontWeight: 450,
+                    }}
                   >
-                    <X className="h-5 w-5" />
-                  </button>
-                </div>
-              ) : (
-                <span
-                  className="border text-center border-gray-400 px-5 py-3 text-gray-400 w-[180px] truncate"
-                  style={{
-                    fontFamily: "Montserrat, sans-serif",
-                    fontWeight: 450,
-                  }}
-                >
-                  No file chosen
-                </span>
-              )}
+                    <Upload className="mr-2 h-6 w-6" />
+                    Upload CV
+                  </span>
+                </label>
+
+                {file ? (
+                  <div className="flex items-center border border-gray-400 px-4 py-2 md:py-3 text-gray-700 md:max-w-[220px] max-w-full">
+                    <span className="truncate flex-1">{file.name}</span>
+                    <button
+                      type="button"
+                      onClick={handleRemoveFile}
+                      className="ml-2 text-gray-500 hover:text-black cursor-pointer"
+                    >
+                      <X className="h-5 w-5" />
+                    </button>
+                  </div>
+                ) : (
+                  <span
+                    className="border text-center border-gray-400 px-5 py-2 md:py-3 text-gray-400 w-full md:w-[150px] truncate"
+                    style={{
+                      fontFamily: "Montserrat, sans-serif",
+                      fontWeight: 450,
+                    }}
+                  >
+                    No file chosen
+                  </span>
+                )}
+              </div>
             </div>
 
-            <Button
-              type="submit"
-              className="bg-[#a1ca3a] text-black px-22 py-7 rounded-full cursor-pointer active:scale-90 transition"
-            >
-              Submit
-            </Button>
+            {/* Submit Button */}
+            <div className="w-full flex justify-center md:justify-start mt-6">
+              <Button
+                type="submit"
+                className="bg-[#a1ca3a] text-black px-10 py-4 rounded-full active:scale-90 transition w-[85%] sm:w-[40%] md:w-auto"
+                style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  fontWeight: 500,
+                  fontSize: 18,
+                }}
+              >
+                Submit
+              </Button>
+            </div>
           </div>
         </form>
       </section>
