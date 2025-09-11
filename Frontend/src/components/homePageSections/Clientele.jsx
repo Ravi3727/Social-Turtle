@@ -8,7 +8,7 @@ const Clientele = () => {
               fontFamily: "Calisga, serif",
            
             }}className=' text-[28px] md:text-[49px] text-center mt-10 text-black font-extrabold '>Clientele</div>
-      <div className='w-full relative h-fit flex flex-shrink-0 flex-col justify-center items-center  overflow-clip'>
+      <div className='w-full relative h-fit flex flex-shrink-0 flex-col gap-2 justify-center items-center mt-2 overflow-clip'>
         <motion.div
           className="flex  justify-evenly items-center w-full  "
           animate={{ x: ["0%", "-100%", "0%"] }} // move left continuously

@@ -6,7 +6,7 @@ const Testimonialscard = () => {
         <div style={{
                   fontFamily: "Montserrat, sans-serif",
                   
-                }} className='border-[#000000] border-[0.2px] md:w-[532px] md:h-[376px] h-[342px] w-[348px] py-6 flex flex-col items-center   rounded-lg ' >
+                }} className='border-[#000000] border-[0.2px] md:w-[532px] md:h-[376px] h-[342px] w-[348px] py-6 flex flex-col items-center bg-white   rounded-lg ' >
             <div className='flex justify-start w-[80%] '>
                 <Quote className='rotate-z-180 fill-black stroke-0   ' />
             </div>
