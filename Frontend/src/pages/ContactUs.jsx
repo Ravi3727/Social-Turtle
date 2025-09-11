@@ -48,9 +48,8 @@ const FaqItem = ({ faq, index, openIndex, setOpenIndex }) => {
         </div>
       </button>
       <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out ${
-          isOpen ? "max-h-96 mt-4" : "max-h-0"
-        }`}
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-96 mt-4" : "max-h-0"
+          }`}
       >
         <p className="text-gray-500">{faq.answer}</p>
       </div>
@@ -91,13 +90,15 @@ const ContactUs = () => {
               style={{ fontFamily: "Calisga, sans-serif" }}
             >
               {/* Responsive font sizes for the title */}
-              <h2 className="text-4xl md:text-5xl font-bold text-black">
-                Frequently
-              </h2>
-              <h2 className="text-4xl md:text-5xl font-bold text-black">
-                Asked
-              </h2>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#94be4c] mt-2">
+              <div className="flex md:flex-col md:space-x-2 justify-center md:justify-start">
+                <h2 className="text-[28px] md:text-5xl font-semibold text-black">
+                  Frequently
+                </h2>
+                <h2 className="text-[28px] md:text-5xl font-semibold text-black">
+                  Asked
+                </h2>
+              </div>
+              <h2 className="text-[28px] md:text-5xl font-semibold text-[#94be4c] mt-2">
                 Questions
               </h2>
             </div>
