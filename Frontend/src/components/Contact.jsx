@@ -23,7 +23,7 @@ const Contact = () => {
       });
 
       const response = await res.json();
-      console.log("Server Response:", response);
+      // console.log("Server Response:", response);
 
       if (response.success) {
         toast.success(
@@ -34,7 +34,7 @@ const Contact = () => {
         toast.error("Error: " + response.message);
       }
     } catch (error) {
-      console.error("Network error:", error);
+      // console.error("Network error:", error);
       toast.error("Network error. Please check your connection and try again.");
     }
   };
