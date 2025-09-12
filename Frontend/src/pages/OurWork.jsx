@@ -34,7 +34,7 @@ const OurWork = () => {
         {/* Header Section */}
         <section className="text-center mb-12">
           <h1
-            className="text-4xl sm:text-5xl font-bold text-black mb-4 font-serif" // Responsive font size
+            className="text-[28px] sm:text-5xl font-bold text-black mb-4 font-serif" // Responsive font size
             style={{ fontFamily: "Calisga, sans-serif" }}
           >
             Our Work
@@ -47,15 +47,24 @@ const OurWork = () => {
         {/* Filtering Navigation Section */}
         <section className="mb-12">
           <nav>
-            {/* Responsive gaps for filter buttons */}
             <ul className="flex items-center justify-center flex-wrap gap-x-4 sm:gap-x-6 gap-y-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               {filterCategories.map((category) => (
                 <li key={category}>
                   <button
                     onClick={() => setActiveFilter(category)}
-                    className={`font-semibold text-sm tracking-wider pb-2 cursor-pointer transition-all duration-300 ${activeFilter === category ? "text-[#94be4c] border-b-2 border-[#94be4c]" : "text-gray-700 hover:text-[#94be4c]"}`}
+                    className={`relative group font-semibold text-sm tracking-wider pb-2 cursor-pointer transition-colors duration-300 ${activeFilter === category
+                        ? "text-[#94be4c]" // Color for the active category
+                        : "text-gray-700 hover:text-[#94be4c]" // Color for inactive and hovered categories
+                      }`}
                   >
                     {category}
+
+                    <span
+                      className={`absolute bottom-0 left-0 block h-[2px] bg-[#94be4c] transition-all duration-300 ease-out ${activeFilter === category
+                          ? 'w-full' // Underline is fully visible if the category is active
+                          : 'w-0 group-hover:w-full' // Animate width from 0 to full on hover
+                        }`}
+                    ></span>
                   </button>
                 </li>
               ))}
@@ -76,9 +85,9 @@ const OurWork = () => {
                 />
                 <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-500">
                   {/* Responsive padding on hover text */}
-                  <div className="absolute bg-neutral-800 bottom-0 left-0 p-4 md:p-6 flex justify-between items-center w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute bg-neutral-800 bottom-0 left-0 p-4 md:p-6 flex justify-between items-center w-full md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
                     <div>
-                      <h3 className="text-white text-lg md:text-xl font-bold">{item.title}</h3>
+                      <h3 className="text-white text-[16px] md:text-[20px] font-bold">{item.title}</h3>
                     </div>
                     <span className="bg-black bg-opacity-50 text-white text-xs font-semibold px-3 py-1 rounded-full">{item.tag}</span>
                   </div>

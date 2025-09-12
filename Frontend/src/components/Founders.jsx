@@ -52,8 +52,8 @@ const Founders = () => {
         >
             {/* Text Content */}
             <div className="text-center px-12 z-10 max-w-3xl mx-auto">
-                <h1 className="font-serif text-5xl md:text-7xl font-medium mb-6" style={{ fontFamily: "Calisga, sans-serif" }}>Social Turtle</h1>
-                <p className="text-lg md:text-xl leading-relaxed">
+                <h1 className="font-serif text-[28px] text-5xl md:text-7xl font-medium mb-6" style={{ fontFamily: "Calisga, sans-serif" }}>Social Turtle</h1>
+                <p className="text-[16px] md:text-xl leading-relaxed">
                     A cool creature of the digital world that believes slow and steady does win the race. Inspired by the turtle's chill vibe and smart moves, Social Turtle takes a calm, clever, and consistent approach to marketing. We dodge trends we don't believe in, protect your brand like a shell, and grow with purpose — no rush, just results. <strong className="font-semibold italic">It's not just a name, it's our way of life.</strong>
                 </p>
             </div>

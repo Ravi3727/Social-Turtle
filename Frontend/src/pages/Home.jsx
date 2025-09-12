@@ -6,12 +6,12 @@ import AiVideosSection from '../components/homePageSections/AiVideosSection'
 import Clientele from '../components/homePageSections/Clientele'
 import Testimonials from '../components/homePageSections/Testimonials'
 import TurtleBlogs from '../components/homePageSections/TurtleBlogs'
-import { motion, useScroll } from 'framer-motion'
+
 
 const Home = () => {
-  const { scrollYProgress } = useScroll();
+
   return (
-<motion.div >
+<div className='scroll-smooth' >
 <Section1/>
 <Services/>
 <CaseStudies/>
@@ -20,7 +20,7 @@ const Home = () => {
 <Testimonials/>
 <TurtleBlogs/>
 
-</motion.div>
+</div>
   )
 }
 

@@ -7,13 +7,16 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion"; // install framer-motion if not already
+
 const Section1 = () => {
   const ref = useRef(null);
   const btnref = useRef(null);
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
-  const [visible, setVisible] = useState(true);
   const [anime, setAnime] = useState(false);
+
+  const [visible, setVisible] = useState(true);
+
   const [curScale, setCurScale] = useState(1);
 
   const { scrollYProgress } = useScroll({
@@ -21,10 +24,14 @@ const Section1 = () => {
     offset: ["start end", "end start"],
   });
 
-  const topPos = useTransform(scrollYProgress, [0.5, 0.6], ["45px", "45px"]); // 2/3 to 0
-  const leftPos = useTransform(scrollYProgress, [0.5, 0.6], ["50%", "50%"]); // 3/5 to 0
+  const bottomPos = useTransform(scrollYProgress, [0.5, 0.6], ["10%", "0%"]);
 
-  const hei = useTransform(scrollYProgress, [0.5, 0.6], ["0vh", "100vh"]);
+  const hei = useTransform(
+    scrollYProgress,
+    [0.5, 0.6],
+    ["0px", `${Math.max(window.innerHeight, 800)}px`]
+  );
+
   const wid = useTransform(scrollYProgress, [0.5, 0.6], ["0vw", "100vw"]);
   const round = useTransform(scrollYProgress, [0.5, 0.6], ["100%", "0"]);
   const clipPath = useTransform(
@@ -35,7 +42,6 @@ const Section1 = () => {
       "polygon(0% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 100%, 100% 100%, 0% 100%, 0% 100%)",
     ]
   );
-
   const textColor = useTransform(
     scrollYProgress,
     [0.4, 0.58],
@@ -120,9 +126,9 @@ const Section1 = () => {
     <motion.div
       ref={ref}
       style={{ color: textColor }}
-      className={`w-screen bg-black h-[90vh] md:h-screen cursor-none  flex flex-col justify-center items-center relative overflow-hidden px-6 `}
+      className={`w-screen  bg-black min-h-[800px] h-screen  cursor-none  flex flex-col justify-center items-center relative overflow-hidden px-6 `}
     >
-      <div className="text-center  z-40  h-fit top-[20%] flex flex-col gap-6 w-3/5  absolute md:w-full lg:w-4/5">
+      <div className="text-center  z-40  h-fit sm:top-[10%] top-[15%] flex flex-col items-center gap-6 w-3/5  absolute md:w-full lg:w-4/5">
         {/* Headline */}
         <motion.h1
           style={{
@@ -144,12 +150,13 @@ const Section1 = () => {
         </motion.h1>
 
         {/* Subtext */}
+
         <p
           style={{
             fontFamily: "Montserrat, sans-serif",
             color: textColor,
           }}
-          className={`text-[14px] md:text-[20px] font-extralight  leading-tight`}
+          className={`text-[14px] md:text-[20px] md:w-2/3 font-extralight  leading-tight`}
         >
           Boost your online visibility, generate quality leads, and increase ROI
           with our expert SEO, social media, and paid marketing strategies.
@@ -162,19 +169,17 @@ const Section1 = () => {
         style={{
           fontFamily: "Montserrat, sans-serif",
         }}
-        className="flex absolute top-[55%] z-10 md:top-[60%] -translate-x-[50%]  justify-center text-[20px] mt-10 md:text-[24px]"
+        className=" relative h-screen w-screen min-h-[800px]  z-10       text-[20px]  md:text-[24px]"
       >
         <motion.div
           style={{
             width: wid,
             height: hei,
-            top: topPos,
-            left: leftPos,
+            bottom: bottomPos,
             borderRadius: round,
             clipPath: clipPath,
-            transform: "translate(-50%, -50%)",
           }}
-          className="absolute  z-10 bg-[#ffffff]"
+          className="absolute   left-1/2 -translate-x-1/2 z-10 bg-white"
         />
 
         <motion.button
@@ -185,8 +190,7 @@ const Section1 = () => {
 
             // ✅ Framer controls scale now
           }}
-          whileHover={{ scale: !anime ? 1.1 : 1 }}
-          whileTap={{ scale: 1.5 }} // ✅ Works now
+          whileTap={{ scale: 2.5 }} // ✅ Works now
           transition={{ duration: 0.3 }}
           onMouseMove={(e) => {
             const rect = btnref.current.getBoundingClientRect();
@@ -196,23 +200,27 @@ const Section1 = () => {
             y.set(offsetY / 3);
           }}
           onClick={() => {
-            setAnime(true);
+            if (ref.current) {
+              const targetY = ref.current.offsetHeight;
+              smoothScrollTo(targetY, 2000); // scroll whole section in 2s
+            }
           }}
           onMouseLeave={() => {
             // Reset on leave
             btnref.current.style.transform = "translate(0px, 0px) scale(1)";
           }}
-          className="flex  items-center gap-2 bg-[#A0CB3A] justify-center absolute z-20   text-black font-medium  w-[200px] md:w-[246px] h-[60px] md:h-[86px] text-center rounded-full hover:bg-[#8fb832] transition"
+          className="flex  items-center gap-2  bottom-[20%] left-1/2 -translate-x-1/2 bg-[#A0CB3A] justify-center absolute z-20 px-2  text-black sm:font-medium sm:w-[246px] sm:h-[86px] h-[65px] w-[180px] rounded-4xl text-center sm:rounded-full hover:bg-[#8fb832] transition"
         >
           Discover Us <ArrowUpRight className="w-6 h-6" />
         </motion.button>
       </div>
 
       {/* Turtle illustration (absolute positioned bottom-right) */}
+
       <img
-        src={"/images/turtle.png"} // replace with your turtle image path
+        src={"/images/turtle.png"}
         alt="Turtle illustration"
-        className={`absolute top-[60%] md:top-[50%] z-0  right-0 w-64 md:w-96 opacity-90`}
+        className={`absolute -bottom-[15%] -right-[10%]  z-0  md:right-0  w-72 sm:w-80 lg:w-96 opacity-90`}
       />
 
       {/* Inner filled cursor */}

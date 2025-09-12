@@ -3,7 +3,7 @@ import Testimonialscard from './Testimonialscard'
 
 const Testimonials = () => {
   return (
-     <div  className='w-screen  h-fit flex flex-col pt-10  items-center gap-6 pb-10 '>
+     <div  className='w-screen  h-fit flex bg-[#F9F9F9] flex-col pt-10  items-center gap-6 pb-10 '>
      <div className='flex flex-col w-screen  font-bold  text-[28px] md:text-[49px]  items-center justify-center  gap-4 text-center'>
               
                 <div style={{
@@ -18,7 +18,7 @@ const Testimonials = () => {
                 </div>
                 </div>
                 <div className="w-full h-fit  py-6 flex items-center gap-6 
-                overflow-x-scroll scrollbar-hide px-4 ">
+                overflow-x-scroll scroll-smooth scrollbar-hide px-4 ">
   {[...Array(6)].map((_, i) => (
     <div key={i} className="flex-shrink-0  ">
       <Testimonialscard />
