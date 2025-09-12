@@ -16,6 +16,26 @@ const CurvedImageCarousel = () => {
     "/images/carousel/img4.png",
     "/images/carousel/img5.png",
     "/images/carousel/img6.png",
+    "/images/carousel/img1.png",
+    "/images/carousel/img2.png",
+    "/images/carousel/img3.png",
+    "/images/carousel/img4.png",
+    "/images/carousel/img5.png",
+    "/images/carousel/img6.png",
+    "/images/carousel/img3.png",
+    "/images/carousel/img4.png",
+    "/images/carousel/img5.png",
+    "/images/carousel/img6.png",
+    "/images/carousel/img1.png",
+    "/images/carousel/img2.png",
+    "/images/carousel/img3.png",
+    "/images/carousel/img4.png",
+    "/images/carousel/img5.png",
+    "/images/carousel/img6.png",
+    "/images/carousel/img3.png",
+    "/images/carousel/img4.png",
+    "/images/carousel/img5.png",
+    "/images/carousel/img6.png",
   ];
 
   const totalImages = images.length;
@@ -31,8 +51,8 @@ const CurvedImageCarousel = () => {
     }
 
     // curve parameters
-    const radius = 1400; // bigger radius for full-screen coverage
-    const angle = position * 15;
+    const radius = 4000; // bigger radius for full-screen coverage
+    const angle = position * 5;
     const radians = (angle * Math.PI) / 180;
 
     const x = Math.sin(radians) * radius+10;
@@ -46,7 +66,7 @@ const CurvedImageCarousel = () => {
     let opacity = 1;
 
     // hide images going too far
-    if (distance > 3) {
+    if (distance > 7) {
       opacity = 0; 
       scale = 0.2;
     }
@@ -57,9 +77,12 @@ const CurvedImageCarousel = () => {
       transform: `translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) scaleY(${scale})`,
       zIndex,
       opacity,
-      transition: isTransitioning
-        ? "all 0.8s cubic-bezier(0.23,1,0.32,1)"
-        : "none",
+         transition: isTransitioning
+      ? "transform 0.8s cubic-bezier(0.23,1,0.32,1), opacity 0.8s cubic-bezier(0.23,1,0.32,1)"
+      : "none",
+    transformStyle: "preserve-3d",
+    backfaceVisibility: "hidden",
+
     };
   };
 
@@ -92,7 +115,7 @@ const CurvedImageCarousel = () => {
      
         <div
           ref={containerRef}
-          className="relative flex items-center justify-center overflow-y-clip w-full min-h-[606px] h-full"
+          className="relative flex scroll-smooth items-center justify-center overflow-y-clip w-full min-h-[606px] h-full"
           style={{
             perspective: "6000px",
             perspectiveOrigin: "center 50%",
@@ -102,7 +125,7 @@ const CurvedImageCarousel = () => {
           {images.map((image, index) => (
             <div
               key={index}
-              className="absolute w-[300px] h-[604px] cursor-pointer left-1/2  -translate-x-1/2 "
+              className="absolute w-[290px] md:w-[300px]  h-[600px] cursor-pointer left-1/2  -translate-x-1/2 "
               style={{
                 ...getImageStyle(index),
                 transformStyle: "preserve-3d",

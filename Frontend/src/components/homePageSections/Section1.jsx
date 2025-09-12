@@ -18,7 +18,7 @@ const { scrollYProgress } = useScroll({
   const bottomPos = useTransform(scrollYProgress, [0.5, 0.6], ['10%', '0%']); 
 
 
-const hei = useTransform(scrollYProgress, [0.5, 0.6], ["0px", `${Math.max(window.innerHeight, 700)}px`
+const hei = useTransform(scrollYProgress, [0.5, 0.6], ["0px", `${Math.max(window.innerHeight, 800)}px`
 ]);
 
 const wid = useTransform(scrollYProgress, [0.5, 0.6], ['0vw','100vw']);
@@ -106,7 +106,7 @@ const smoothScrollTo = (targetY, duration = 2000) => {
 
   return (
     
-    <motion.div ref={ref}  style={{  color: textColor }}  className={`w-screen  bg-black min-h-[700px] h-screen  cursor-none  flex flex-col justify-center items-center relative overflow-hidden px-6 `}>
+    <motion.div ref={ref}  style={{  color: textColor }}  className={`w-screen  bg-black min-h-[800px] h-screen  cursor-none  flex flex-col justify-center items-center relative overflow-hidden px-6 `}>
     
       <div className="text-center  z-40  h-fit sm:top-[10%] top-[15%] flex flex-col items-center gap-6 w-3/5  absolute md:w-full lg:w-4/5">
         {/* Headline */}
@@ -140,7 +140,7 @@ const smoothScrollTo = (targetY, duration = 2000) => {
  <div style={{
                   fontFamily: "Montserrat, sans-serif",
                   
-                }} className=" relative h-screen w-screen min-h-[700px]  z-10       text-[20px]  md:text-[24px]">
+                }} className=" relative h-screen w-screen min-h-[800px]  z-10       text-[20px]  md:text-[24px]">
                  
                  <motion.div 
                  style={{
@@ -181,7 +181,7 @@ onClick={() => {
   onMouseLeave={() => {
     // Reset on leave
     btnref.current.style.transform = "translate(0px, 0px) scale(1)";
-  }} className="flex scale-150 items-center gap-2 bottom-[15%] left-1/2 -translate-x-1/2 bg-[#A0CB3A] justify-center absolute z-20 px-2  text-black font-medium  md:w-[246px] md:h-[86px] sm:h-[95px] sm:w-[200px] h-[70px] w-[150px] rounded-4xl text-center sm:rounded-full hover:bg-[#8fb832] transition">
+  }} className="flex  items-center gap-2  bottom-[20%] left-1/2 -translate-x-1/2 bg-[#A0CB3A] justify-center absolute z-20 px-2  text-black font-medium  md:w-[246px] md:h-[86px] sm:h-[95px] sm:w-[200px] h-[70px] w-[150px] rounded-4xl text-center sm:rounded-full hover:bg-[#8fb832] transition">
             Discover Us <ArrowUpRight className="w-6 h-6" />
           </motion.button>
         </div>
@@ -195,7 +195,7 @@ onClick={() => {
       <img
         src={"/images/turtle.png"} 
         alt="Turtle illustration"
-        className={`absolute top-[60%] md:top-[50%] z-0  right-0 w-64 md:w-96 opacity-90`}
+        className={`absolute -bottom-[15%] -right-[10%]  z-0  md:right-0  w-72 sm:w-80 lg:w-96 opacity-90`}
       />
 
 

@@ -21,7 +21,7 @@ const TurtleBlogs = () => {
       </div>
 
       {/* Horizontal scroll cards */}
-      <div className="flex w-full overflow-x-scroll scroll-smooth min-h-fit py-6   scrollbar-hide gap-6 px-4 justify-center items-center">
+      <div className="flex w-full overflow-x-scroll scroll-smooth min-h-fit py-6   scrollbar-hide gap-6 px-4 justify-start items-center">
         <div className="flex-shrink-0"><TurtleBlogsCard /></div>
         <div className="flex-shrink-0"><TurtleBlogsCard /></div>
         <div className="flex-shrink-0"><TurtleBlogsCard /></div>
