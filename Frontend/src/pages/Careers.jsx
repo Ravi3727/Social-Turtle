@@ -240,41 +240,52 @@ export default function Careers() {
             />
 
             {/* File Upload */}
+            {/* File Upload */}
             <div className="w-full flex justify-center md:justify-start">
-              <div className="flex flex-col md:flex-row items-center md:items-stretch gap-3">
-                <label className="cursor-pointer">
-                  <input
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    className="hidden"
-                    onChange={handleFileChange}
-                  />
-                  <span
-                    className="bg-black text-white px-8 py-2 md:py-3 flex text-[14px] items-center h-full"
+              <div className="inline-flex items-stretch">
+                {/* Hidden native input */}
+                <input
+                  id="cv"
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+
+                {/* Left: Upload button */}
+                <label
+                  htmlFor="cv"
+                  className="inline-flex cursor-pointer select-none items-center gap-2 bg-black px-5 md:px-6 text-white text-[14px] md:text-[16px] leading-none h-12 md:h-12 "
+                  style={{
+                    fontFamily: "Montserrat, sans-serif",
+                    fontWeight: 450,
+                  }}
+                >
+                  <Upload className="h-5 w-5" />
+                  Upload CV
+                </label>
+
+                {/* Right: filename / placeholder */}
+                {file ? (
+                  <div
+                    className="inline-flex items-center gap-2 border border-l-0 border-gray-400 px-4 text-gray-700 h-12 md:h-12  w-[180px]"
                     style={{
                       fontFamily: "Montserrat, sans-serif",
                       fontWeight: 450,
                     }}
                   >
-                    <Upload className="mr-2 h-6 w-6" />
-                    Upload CV
-                  </span>
-                </label>
-
-                {file ? (
-                  <div className="flex items-center border border-gray-400 px-4 py-2 md:py-3 text-gray-700 md:max-w-[220px] max-w-full">
                     <span className="truncate flex-1">{file.name}</span>
                     <button
                       type="button"
                       onClick={handleRemoveFile}
-                      className="ml-2 text-gray-500 hover:text-black cursor-pointer"
+                      className="text-gray-500 hover:text-black"
                     >
-                      <X className="h-5 w-5" />
+                      <X className="h-5 w-5 cursor-pointer" />
                     </button>
                   </div>
                 ) : (
                   <span
-                    className="border text-center border-gray-400 px-5 py-2 md:py-3 text-gray-400 w-full md:w-[150px] truncate"
+                    className="inline-flex items-center border border-l-0 border-gray-400 px-5 text-gray-400 h-12 md:h-12 w-[180px] cursor-pointer truncate"
                     style={{
                       fontFamily: "Montserrat, sans-serif",
                       fontWeight: 450,
@@ -290,7 +301,7 @@ export default function Careers() {
             <div className="w-full flex justify-center md:justify-start mt-6">
               <Button
                 type="submit"
-                className="bg-[#a1ca3a] text-black px-10 py-4 rounded-full active:scale-90 transition w-[85%] sm:w-[40%] md:w-auto"
+                className="bg-[#a1ca3a] text-black px-18 py-4 rounded-full active:scale-90 transition w-[85%] sm:w-[330px] md:w-auto"
                 style={{
                   fontFamily: "Montserrat, sans-serif",
                   fontWeight: 500,
