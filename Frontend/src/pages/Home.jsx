@@ -11,7 +11,7 @@ import TurtleBlogs from '../components/homePageSections/TurtleBlogs'
 const Home = () => {
 
   return (
-<div className='scroll-smooth' >
+<div className='scroll-smooth overflow-x-clip' >
 <Section1/>
 <Services/>
 <CaseStudies/>

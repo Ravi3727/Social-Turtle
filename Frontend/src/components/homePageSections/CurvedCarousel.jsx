@@ -106,7 +106,7 @@ const CurvedImageCarousel = () => {
       if (!isTransitioning) {
         nextSlide();
       }
-    }, 200);
+    }, 500);
     return () => clearInterval(interval);
   }, [isTransitioning]);
 

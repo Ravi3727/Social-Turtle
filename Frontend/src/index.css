@@ -44,3 +44,10 @@
   animation: foundersSlider 30s linear infinite; /* speed can be adjusted */
   width: max-content;
 }
+
+.button-text {
+  position: absolute; /* stay in place */
+  left: 50%; 
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
