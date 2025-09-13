@@ -3,6 +3,7 @@ import { motion, useMotionValue } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowUpRight } from "lucide-react";
 
 const CaseStudies = () => {
   const ref = useRef(null);
@@ -23,7 +24,7 @@ const CaseStudies = () => {
   // GSAP Animation
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      const images = animRef.current.querySelectorAll("img");
+      const images = animRef.current.querySelectorAll(".bg-slide");
 
       // Initial state
       gsap.set(images, { y: "150%", opacity: 1, scale: 1.3 });
@@ -91,7 +92,7 @@ const CaseStudies = () => {
   return (
     <div
       ref={ref}
-      className="bg-[#F6F6F6] w-screen h-fit relative overflow-clip pt-10 pb-10 flex gap-6 flex-col items-center"
+      className="bg-[#F6F6F6] w-screen h-fit relative overflow-x-clip pt-10 pb-10 flex gap-6 flex-col items-center"
     >
       <div
         style={{ fontFamily: "Calisga, serif" }}
@@ -101,18 +102,32 @@ const CaseStudies = () => {
       </div>
 
       {/* Pinned container */}
-      <div className="h-[180vh] w-screen relative ">
+      <div className="h-[180vh] flex justify-center w-screen relative ">
         <div
           ref={animRef}
-          className="w-screen flex flex-col items-center h-screen overflow-hidden "
+          className="w-screen flex flex-col items-center  h-screen overflow-hidden "
         >
           {images.map((img, i) => (
-            <img
-              key={i}
-              src={img.src}
-              className={`w-screen md:w-screen object-center rounded-2xl absolute object-cover md:py-10 ${img.height}`}
-            />
-          ))}
+  <div
+    key={i}
+    style={{ backgroundImage: `url(${img.src})`,
+  fontFamily:  "Montserrat, sans-serif", }}
+    className={`w-screen   bg-slide  bg-cover bg-center flex items-end justify-center pb-4 rounded-2xl absolute md:py-10 ${img.height}`}
+  >
+ <div className="bg-white w-[95%] rounded-lg flex flex-col px-4 gap-2 sm:flex-row  sm:justify-between sm:px-2 py-4 sm:items-center h-fit">
+  <div className="font-semibold text-xl tracking-tighter">Project Name </div>
+  <div className="flex font-semibold gap-2">
+ <div className="bg-[#D8D8D8] text-[10px] sm:text-sm text-center py-2 px-2 sm:px-4 rounded-full">
+    Branding & Packaging
+  </div>
+  <div className="bg-[#D8D8D8] text-[10px] sm:text-sm text-center py-2 px-2 sm:px-4 rounded-full">
+    Logo Design
+  </div> </div>
+  <div className="bg-[#D8D8D8] h-fit w-fit  p-2 rounded-full "><ArrowUpRight /></div>
+ </div>
+  </div>
+))}
+
         </div>
       </div>
       {/* Cursor */}
