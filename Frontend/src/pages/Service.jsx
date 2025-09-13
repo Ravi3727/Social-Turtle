@@ -1,5 +1,6 @@
 import React from "react";
 import rolexImg from "../assets/rolex.png";
+// import china from "../assets/china.png";
 import OurWork from "./OurWork";
 
 const Service = () => {
@@ -58,8 +59,13 @@ const Service = () => {
             <img
               src={rolexImg}
               alt="Branding and packaging visual"
-              className="mx-auto lg:ml-0 w-[730px] object-cover"
+              className="mx-auto lg:ml-0  w-[730px] md:h-[430px] md:w-full object-cover"
             />
+            {/* <img
+              src={china}
+              alt="Branding and packaging visual"
+              className="mx-auto mt-4 sm:hidden lg:ml-0 w-[730px] h-[350px] object-cover"
+            /> */}
           </figure>
         </section>
 
