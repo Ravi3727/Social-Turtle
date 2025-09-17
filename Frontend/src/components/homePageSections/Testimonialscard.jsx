@@ -19,10 +19,10 @@ const Testimonialscard = () => {
         tellus. Eget venenatis{" "}
       </div>
       <div className="w-[80%]  border-1 border-[#C4C4C4]"></div>
-      <div className="flex mt-2 justify-between gap-8 items-center">
+      <div className="flex mt-2 w-[80%] justify-between items-center">
         <div className="w-10 h-10 md:w-15 rounded-full md:h-15 bg-[#D9D9D9]"></div>
         <div className="md:flex   md:gap-4 items-center justify-between px-1">
-          <div>
+          <div className="px-1">
             <div className="font-bold text-lg md:text-[16px]">
               Nikhil Sharma{" "}
             </div>
@@ -30,8 +30,8 @@ const Testimonialscard = () => {
               CEO & Managing Director{" "}
             </div>
           </div>
-          <div className="flex flex-col items-start gap-1">
-            <div className="flex  ">
+          <div className="flex flex-col   items-start gap-1">
+            <div className="flex justify-start  ">
               <img
                 src="/images/star.png"
                 className="md:w-8 md:h-8 h-6 w-6"
@@ -58,7 +58,7 @@ const Testimonialscard = () => {
                 alt=""
               />
             </div>
-            <div className="font-extralight hidden text-[12px] md:block  md:text-sm">
+            <div className="font-extralight px-2 hidden text-[12px] md:block  md:text-sm">
               5.0 Rating
             </div>
           </div>

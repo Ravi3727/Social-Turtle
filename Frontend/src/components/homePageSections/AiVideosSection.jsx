@@ -32,7 +32,7 @@ function getCurveStyle(i, mid) {
                 <div style={{
               fontFamily: "Calisga, serif",
            
-            }} className='text-[#A0CB3A]'>AI Generated Videos</div>
+            }} className='text-[#A0CB3A] '>AI Generated Videos</div>
                   <div className='text-[20px] mt-4 font-extralight w-1/2 md:block hidden '>
                     Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.Lorem ipsum dolor sit amet consectetur. Morbi diam tellus metus bibendum.
                 </div>
