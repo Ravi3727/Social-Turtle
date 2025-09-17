@@ -1,63 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, useMotionValue } from "framer-motion";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
+
+import Cards from "./Cards";
 
 const CaseStudies = () => {
   const ref = useRef(null);
-  const animRef = useRef(null);
-  const images = [
-    { src: "/images/mountain.png", height: "h-[80vh]" },
-    { src: "/images/mountain.png", height: "h-[80vh]" },
-    { src: "/images/mountain.png", height: "h-[80vh]" },
-    { src: "/images/mountain.png", height: "h-[80vh]" },
-  ];
-  gsap.registerPlugin(ScrollTrigger);
+  
+ 
 
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
-  const [visible, setVisible] = useState(true);
   const timeoutRef = useRef(null);
 
-  // GSAP Animation
-  useGSAP(() => {
-    const ctx = gsap.context(() => {
-      const images = animRef.current.querySelectorAll(".bg-slide");
-
-      // Initial state
-      gsap.set(images, { y: "150%", opacity: 1, scale: 1.3 });
-
-      // Timeline for sequencing
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: animRef.current,
-          start: "center 70% ",
-          end: "+=100%", // total scroll distance
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
-
-      // Animate each image one after the other
-      images.forEach((img, i) => {
-        tl.to(
-          img,
-          {
-            y: "0%",
-            opacity: 1,
-            scale: 0.9,
-            duration: 1,
-          },
-          i
-        ); // stagger by index
-      });
-    }, animRef);
-
-    return () => ctx.revert();
-  }, []);
+ 
 
   // Cursor
   useEffect(() => {
@@ -75,10 +30,10 @@ const CaseStudies = () => {
         cursorY.set(e.clientY - rect.top);
       }
 
-      setVisible(true);
       clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => {
-        setVisible(false);
+        cursorX.set(0);
+        cursorY.set(0);
       }, 1000);
     };
 
@@ -92,52 +47,25 @@ const CaseStudies = () => {
   return (
     <div
       ref={ref}
-      className="bg-[#F6F6F6] w-screen h-fit relative overflow-x-clip pt-10 pb-10 flex gap-6 flex-col items-center"
+      className="bg-[#F6F6F6] w-screen h-fit relative pt-10 flex gap-6 flex-col items-center"
     >
       <div
         style={{ fontFamily: "Calisga, serif" }}
-        className="font-bold text-[28px] md:text-[49px]  text-center"
+        className="font-bold text-[28px] md:text-[49px] text-center"
       >
         Case Studies
       </div>
 
-      {/* Pinned container */}
-      <div className="h-[180vh] flex justify-center w-screen relative ">
-        <div
-          ref={animRef}
-          className="w-screen flex flex-col items-center  h-screen overflow-hidden "
-        >
-          {images.map((img, i) => (
-  <div
-    key={i}
-    style={{ backgroundImage: `url(${img.src})`,
-  fontFamily:  "Montserrat, sans-serif", }}
-    className={`w-screen   bg-slide  bg-cover bg-center flex items-end justify-center pb-4 rounded-2xl absolute md:py-10 ${img.height}`}
-  >
- <div className="bg-white w-[95%] rounded-lg flex flex-col px-4 gap-2 sm:flex-row  sm:justify-between sm:px-2 py-4 sm:items-center h-fit">
-  <div className="font-semibold text-xl tracking-tighter">Project Name </div>
-  <div className="flex font-semibold gap-2">
- <div className="bg-[#D8D8D8] text-[10px] sm:text-sm text-center py-2 px-2 sm:px-4 rounded-full">
-    Branding & Packaging
-  </div>
-  <div className="bg-[#D8D8D8] text-[10px] sm:text-sm text-center py-2 px-2 sm:px-4 rounded-full">
-    Logo Design
-  </div> </div>
-  <div className="bg-[#D8D8D8] h-fit w-fit  p-2 rounded-full "><ArrowUpRight /></div>
- </div>
-  </div>
-))}
+     <Cards/>
 
-        </div>
-      </div>
       {/* Cursor */}
       <motion.div
-        style={{ x: cursorX, y: cursorY, opacity: visible ? 1 : 0 }}
+        style={{ x: cursorX, y: cursorY }}
         transition={{ type: "spring", stiffness: 50, damping: 10 }}
         className="border-4 border-[#A0CB3A] h-10 w-10 rounded-full absolute top-0 left-0 z-30 pointer-events-none -translate-x-1/2 -translate-y-1/2"
       />
       <motion.div
-        style={{ x: cursorX, y: cursorY, opacity: visible ? 1 : 0 }}
+        style={{ x: cursorX, y: cursorY }}
         transition={{ type: "spring", stiffness: 200, damping: 30 }}
         className="border-4 border-[#A0CB3A] h-2 w-2 rounded-full absolute top-0 left-0 z-30 pointer-events-none -translate-x-1/2 -translate-y-1/2"
       />

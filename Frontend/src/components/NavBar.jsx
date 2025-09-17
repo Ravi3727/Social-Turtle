@@ -14,7 +14,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 lg:bg-black/80 bg-black/90 backdrop-blur:4xl lg:backdrop-blur-2xl py-3 lg:py-1">
+    <nav className="sticky top-0 z-50 lg:bg-black bg-black backdrop-blur:4xl lg:backdrop-blur-2xl py-3 lg:py-1">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 lg:py-0 lg:h-20">
         
         {/* Logo */}
