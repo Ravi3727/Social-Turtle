@@ -273,7 +273,6 @@ const Section1 = () => {
   const btnref = useRef(null);
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
-  const [anime, setAnime] = useState(false);
 const isAnimatingRef = useRef(false);
 
  
@@ -405,17 +404,7 @@ const discoverUs=btnref.current?.querySelector("div");
  
 
 
-  useEffect(() => {
-    if (anime) {
-      gsap.to(window, {
-       scrollTo: { y: window.innerHeight, autoKill: true }, // ✅ must be an object
-     duration: 2, // 2 seconds
-      ease: "power2.inOut",
-      // reset flag after scroll
-    });
-    setAnime(false) 
-    }
-  }, [anime]);
+
 
   return (
     <motion.div
@@ -485,7 +474,12 @@ const discoverUs=btnref.current?.querySelector("div");
   onClick={() => {
     x.set(0);
   y.set(0);
-    setAnime(true);
+    gsap.to(window, {
+       scrollTo: { y: window.innerHeight, autoKill: true }, // ✅ must be an object
+     duration: 2, // 2 seconds
+      ease: "power2.inOut",
+      // reset flag after scroll
+    });
   }}
   className="flex items-center gap-2 bottom-[20%]    bg-[#A0CB3A] justify-center absolute z-40 px-2 text-black sm:font-medium sm:w-[246px] sm:h-[86px] h-[65px] w-[180px] rounded-full text-center hover:bg-[#8fb832] transition"
 >
