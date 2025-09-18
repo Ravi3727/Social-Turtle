@@ -20,7 +20,8 @@ const Cards = () => {
             scrollTrigger:{
                 trigger:item,
                 start:"top 30%",
-                end:"bottom 20%",
+                end:"bottom 30%",
+             
                 scrub:true,
                
             }
