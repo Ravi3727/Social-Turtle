@@ -1,9 +1,52 @@
 import React from "react";
-import rolexImg from "../assets/rolex.png";
-// import china from "../assets/china.png";
-import OurWork from "./OurWork";
+import OurWorkService from "./OurWorkService";
+import { useParams } from "react-router-dom";
+
+const servicesData = [
+  {
+    title: "Social Media Management",
+    link: "/Service_Images/social_media/1.jpg",
+    description: "We don’t just post and pray. We plan your content, design the visuals, write captions that sound like humans, and manage your page daily. From grid aesthetics to content calendars, everything is built to grow reach, engagement, and trust. The goal is simple: make your brand show up consistently, stay relevant, and actually get noticed on crowded feeds.",
+  },
+  {
+    title: "Logo Designing",
+    link: "/Service_Images/logo/1.jpg",
+    description: "We create content people don’t skip. From ideas and scripts to shoots and edits, we handle everything end-to-end. Reels, photos, campaigns, or brand films — all made for how people scroll today. Clean visuals, natural storytelling, and zero overproduction. Content that feels real, looks premium, and fits your brand without trying too hard.",
+  },
+  {
+    title: "Performance Marketing",
+    link: "/Service_Images/Ads/1.jpg",
+    description: "We run ads that make sense, not noise. Meta and Google campaigns backed by testing, data, and constant optimisation. We track what works, fix what doesn’t, and scale what converts. No random boosts, no blind spending. Just smarter ads, better ROAS, and campaigns that are actually accountable to results.",
+  },
+  {
+    title: "Branding And Packaging",
+    link: "/Service_Images/packaging_branding/1.jpg",
+    description: "Logos, colors, fonts, and brand language — we help brands look confident and consistent everywhere. Online, offline, and everywhere in between. It’s not just about looking good, it’s about being recognizable at first glance. Branding that feels intentional, sharp, and true to who you are, not something pulled off a template.",
+  },
+  {
+    title: "Pr And Influencer Marketing",
+    link: "/Service_Images/Influencer and Marketing/1.jpg",
+    description: "We work with creators who feel right for your brand, not just popular. From sourcing influencers to guiding content, we focus on authenticity and relatability. Real people, real stories, real impact. UGC that blends into feeds naturally, builds trust, and nudges people from scrolling to actually checking your brand out.",
+  },
+  {
+    title: "Website Designing",
+    link: "/Service_Images/Website/1.png",
+    description: "We design websites that people enjoy using. Clean layouts, clear messaging, fast loading, and zero confusion. Every page is built to guide users smoothly, not overwhelm them. Whether it’s a brand site or a conversion-focused page, we make sure your website looks good, works better, and supports real business goals.",
+  },
+]
 
 const Service = () => {
+  let { service } = useParams();
+
+  if (!service) {
+    service = "Logo Designing";
+  } else {
+    service = service
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
   return (
     <main className="bg-white">
       {/* Page container */}
@@ -17,7 +60,9 @@ const Service = () => {
               color: "#A0CB3A",
             }}
           >
-            Branding & Packaging
+            {
+              service === "Pr And Influencer Marketing" ? "PR & Influencer Marketing" : service === "Branding And Packaging" ? "Branding & Packaging" : service
+            }
           </h1>
         </header>
 
@@ -28,7 +73,7 @@ const Service = () => {
             {" "}
             {/* was order-2 lg:order-1 */}
             <div className="max-w-[760px]">
-              <h2
+              {/* <h2
                 className="font-bold"
                 style={{
                   fontFamily: "Montserrat, sans-serif",
@@ -38,7 +83,7 @@ const Service = () => {
                 Is your brand just seen — or is it
                 <br />
                 remembered?
-              </h2>
+              </h2> */}
 
               <p
                 className="mt-5 sm:mt-6 text-[16px] md:text-[20px] leading-[1.42]"
@@ -47,7 +92,7 @@ const Service = () => {
                   color: "#000000",
                 }}
               >
-                At Social Turtle, we don’t just design logos and boxes — we craft identities that stick. From strategic brand positioning to eye-catching packaging that stands out on shelves and screens, our work is rooted in storytelling, psychology, and design precision. Whether you're launching a new product or refreshing an old favorite, we make sure your brand speaks loud and looks unforgettable.
+                {servicesData.filter((item) => item.title === service)[0].description}
               </p>
             </div>
           </div>
@@ -57,9 +102,9 @@ const Service = () => {
             {" "}
             {/* was order-1 lg:order-2 */}
             <img
-              src={rolexImg}
+              src={servicesData.filter((item) => item.title === service)[0].link}
               alt="Branding and packaging visual"
-              className="mx-auto lg:ml-0  w-[730px] md:h-[430px] md:w-full object-cover"
+              className="mx-auto lg:ml-0  w-[730px] md:h-[430px] md:w-full object-cover rounded-md"
             />
             {/* <img
               src={china}
@@ -72,7 +117,7 @@ const Service = () => {
         {/* Optional: subtle spacer to separate from next section */}
         <div className="h-10 sm:h-12 lg:h-14" />
       </div>
-      <OurWork />
+      <OurWorkService service={service} />
     </main>
   );
 };

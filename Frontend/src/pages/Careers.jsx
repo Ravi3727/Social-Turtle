@@ -117,8 +117,7 @@ export default function Careers() {
               fontWeight: 450,
             }}
           >
-            Lorem ipsum dolor sit amet consectetur. Lorem praesent ultricies
-            viverra sit maecenas commodo. Pretium amet ligula n
+            Join a team that values ideas, ownership, and real impact. At Social Turtle, you don’t just work on brands , you help shape what’s next.
           </p>
 
           <Button
