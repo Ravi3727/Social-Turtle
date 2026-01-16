@@ -12,12 +12,8 @@ const Section1 = () => {
   const containerRef = useRef(null);
   const contentRef = useRef(null);
   const btnref = useRef(null);
-  const springX = useSpring(cursorX);
-  const springY = useSpring(cursorY);
-  const [anime, setAnime] = useState(false);
-  const isAnimatingRef = useRef(false);
-
   const videoRef = useRef(null);
+  const [videoSrc, setVideoSrc] = useState("");
   const audioUnlocked = useRef(false);
 
   // 1. Handle Responsive Video Src
@@ -139,34 +135,18 @@ const Section1 = () => {
       }
     };
     window.addEventListener("mousemove", moveCursor);
-
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      clearTimeout(timeoutRef.current); // cleanup timer
-    };
-  }, [cursorX, cursorY]);
+    return () => window.removeEventListener("mousemove", moveCursor);
+  }, []);
 
 
 
-
-  useEffect(() => {
-    if (anime) {
-      gsap.to(window, {
-        scrollTo: { y: window.innerHeight, autoKill: true }, // ✅ must be an object
-        duration: 2, // 2 seconds
-        ease: "power2.inOut",
-        // reset flag after scroll
-      });
-      setAnime(false)
-    }
-  }, [anime]);
 
   return (
     <div
       ref={containerRef}
       className="w-full h-screen bg-black relative overflow-hidden"
     >
-      {/* 1. Initial Content */}
+      {/* 1. Initial Content   */}
       <div
         ref={contentRef}
         className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-32 px-6 text-center pointer-events-none"
@@ -180,93 +160,58 @@ const Section1 = () => {
         </p>
       </div>
 
-      <motion.button
+      {/* 2. Expanding Button / Video Container */}
+      <motion.div
         ref={btnref}
-        style={{ x: springX, y: springY }}
-        whileTap={{ scale: 1.1 }}
-        transition={{ duration: 0.3 }}
+        style={{
+          x: springBtnX,
+          y: springBtnY,
+          left: "50%",
+          top: "75%",
+          translateX: "-50%",
+          translateY: "-50%",
+          position: "absolute"
+        }}
         onMouseMove={(e) => {
-          if (isAnimatingRef.current) return;
+          if (window.innerWidth < 768) return;
           const rect = btnref.current.getBoundingClientRect();
-          const offsetX = e.clientX - rect.left - rect.width / 2;
-          const offsetY = e.clientY - rect.top - rect.height / 2;
-          x.set(offsetX / 3);
-          y.set(offsetY / 3);
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          btnX.set((e.clientX - centerX) * 0.3);
+          btnY.set((e.clientY - centerY) * 0.3);
         }}
-        onClick={() => {
-          x.set(0);
-          y.set(0);
-          setAnime(true);
-        }}
-        className="flex items-center gap-2 bottom-[20%]    bg-[#A0CB3A] justify-center absolute z-40 px-2 text-black sm:font-medium sm:w-[246px] sm:h-[86px] h-[65px] w-[180px] rounded-full text-center hover:bg-[#8fb832] transition"
+        onMouseLeave={() => { btnX.set(0); btnY.set(0); }}
+        onClick={handleButtonClick}
+        className="z-30 bg-[#A0CB3A] w-[180px] h-[60px] md:w-[240px] md:h-[80px] rounded-full overflow-hidden flex items-center justify-center cursor-pointer"
       >
-        <div className="flex absolute items-center bottom-1/2 translate-y-1/2 gap-1">
-          Discover Us <ArrowUpRight className="w-6 h-6" />
+        {videoSrc && (
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            loop
+            playsInline
+            muted
+            className="absolute inset-0 w-full h-full object-cover opacity-0 pointer-events-none"
+          />
+        )}
+        <div className="btn-content relative z-10 flex items-center gap-2 text-black font-bold pointer-events-none">
+          <span className="text-sm md:text-base">Discover Us</span>
+          <ArrowUpRight className="w-5 h-5" />
         </div>
-      </motion.button>
+      </motion.div>
 
-    </div>
-
-      {/* Turtle illustration (absolute positioned bottom-right) */ }
-
-  <img
-    src={"/images/turtle.png"}
-    alt="Turtle illustration"
-    className={`absolute -bottom-20 -right-[10%]  z-0  md:right-0  w-56  sm:w-80 lg:w-96 opacity-90`}
-  />
-
-  {/* Inner filled cursor */ }
-  <motion.div
-    ref={btnref}
-    style={{
-      x: springBtnX,
-      y: springBtnY,
-      left: "50%",
-      top: "75%",
-      translateX: "-50%",
-      translateY: "-50%",
-      position: "absolute" // Changed from fixed to absolute
-    }}
-    onMouseMove={(e) => {
-      if (window.innerWidth < 768) return;
-      const rect = btnref.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      btnX.set((e.clientX - centerX) * 0.3);
-      btnY.set((e.clientY - centerY) * 0.3);
-    }}
-    onMouseLeave={() => { btnX.set(0); btnY.set(0); }}
-    onClick={handleButtonClick}
-    className="z-30 bg-[#A0CB3A] w-[180px] h-[60px] md:w-[240px] md:h-[80px] rounded-full overflow-hidden flex items-center justify-center cursor-pointer"
-  >
-    {videoSrc && (
-      <video
-        ref={videoRef}
-        src={videoSrc}
-        loop
-        playsInline
-        muted
-        className="absolute inset-0 w-full h-full object-cover opacity-0 pointer-events-none"
+      {/* 3. Custom Cursor */}
+      <motion.div
+        style={{
+          x: cursorX,
+          y: cursorY,
+          scale: curScale,
+          translateX: "-50%",
+          translateY: "-50%"
+        }}
+        className="hidden md:block fixed top-0 left-0 w-4 h-4 bg-[#A0CB3A] mix-blend-difference rounded-full pointer-events-none z-50"
       />
-    )}
-    <div className="btn-content relative z-10 flex items-center gap-2 text-black font-bold pointer-events-none">
-      <span className="text-sm md:text-base">Discover Us</span>
-      <ArrowUpRight className="w-5 h-5" />
     </div>
-  </motion.div>
-
-  {/* 3. Custom Cursor */ }
-  <motion.div
-    style={{
-      x: cursorX,
-      y: cursorY,
-      scale: curScale,
-      translateX: "-50%",
-      translateY: "-50%"
-    }}
-    className="hidden md:block fixed top-0 left-0 w-4 h-4 bg-[#A0CB3A] mix-blend-difference rounded-full pointer-events-none z-50"
-  />
-    </div >
   );
 };
 
