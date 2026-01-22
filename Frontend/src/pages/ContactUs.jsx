@@ -5,26 +5,58 @@ import Contact from "../components/Contact"; // Assuming this component is alrea
 
 const faqData = [
   {
-    question: "Lorem ipsum dolor sit amet?",
+    question: "What does Social Turtle actually do?",
     answer:
-      "Facilisi cursus urna magna sit nibh suspendisse. Lorem ipsum dolor sit amet consectetur.",
+      "We help brands grow through strategy, content, and performance. From social media and branding to ads, influencers, and production, we handle everything needed to build visibility and drive results.",
   },
   {
-    question: "Vivamus luctus urna sed urna ultricies ac tempor dui sagittis?",
+    question: "Who do you work with?",
     answer:
-      "In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit facilisis tristique.",
+      "We work with startups, growing brands, and established businesses across fitness, food, fashion, beauty, healthcare, and lifestyle. If the brand wants to scale, we’re in.",
   },
   {
-    question: "Praesent evarius tesque a enim et quasi?",
+    question: "Do you handle everything or only social media?",
     answer:
-      "Donec eget risus diam. Curabitur vel libero id nisl porta pulvinar. Suspendisse potenti. Aliquam erat volutpat.",
+      "Everything. Strategy, content creation, shoots, editing, ads, influencer campaigns, branding, and websites. One team. One direction. No scattered execution.",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit in voluptate velit?",
+    question: "How is Social Turtle different from other agencies?",
     answer:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "We don’t do random posting or generic campaigns. Every move is intentional, data-backed, and built for how people actually scroll, click, and buy.",
+  },
+  {
+    question: "Do you create content in-house?",
+    answer:
+      "Yes. From concepts and scripts to shoots and edits, all production is handled by our in-house team to maintain quality and brand consistency.",
+  },
+  {
+    question: "Can you help with paid ads and lead generation?",
+    answer:
+      "Absolutely. We run and optimize Meta and Google ads focused on ROI, not vanity metrics. Better targeting, smarter spends, real conversions.",
+  },
+  {
+    question: "Do you work with influencers and UGC creators?",
+    answer:
+      "Yes. We manage influencer collaborations and UGC campaigns that feel natural, build trust, and influence purchase decisions.",
+  },
+  {
+    question: "How long does it take to see results?",
+    answer:
+      "Brand growth takes consistency, but most clients start seeing engagement and performance improvements within the first 30–60 days.",
+  },
+  {
+    question: "Do you offer customized packages?",
+    answer:
+      "Always. We tailor strategies and pricing based on your goals, industry, and stage of growth. No one-size-fits-all plans here.",
+  },
+  {
+    question: "How do we get started?",
+    answer:
+      "Simple. Reach out, share your goals, and we’ll take it from there. Strategy first. Execution next.",
   },
 ];
+
+
 
 const FaqItem = ({ faq, index, openIndex, setOpenIndex }) => {
   const isOpen = index === openIndex;
