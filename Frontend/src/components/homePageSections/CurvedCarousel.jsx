@@ -95,7 +95,7 @@ const CurvedVideoCarousel = () => {
           <div
             key={i}
             ref={(el) => (itemRefs.current[i] = el)}
-            className="absolute w-[300px] h-[550px]"
+            className="absolute w-[370px] h-[500px]"
             style={{
               transformStyle: "preserve-3d",
               backfaceVisibility: "hidden",

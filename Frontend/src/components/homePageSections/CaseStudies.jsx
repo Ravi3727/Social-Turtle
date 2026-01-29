@@ -5,14 +5,14 @@ import Cards from "./Cards";
 
 const CaseStudies = () => {
   const ref = useRef(null);
-  
- 
+
+
 
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   const timeoutRef = useRef(null);
 
- 
+
 
   // Cursor
   useEffect(() => {
@@ -56,7 +56,7 @@ const CaseStudies = () => {
         Case Studies
       </div>
 
-     <Cards/>
+      <Cards />
 
       {/* Cursor */}
       <motion.div

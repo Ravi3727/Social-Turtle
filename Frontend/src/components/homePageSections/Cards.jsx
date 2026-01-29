@@ -17,7 +17,6 @@ const Cards = () => {
     gsap.utils.toArray(".bg-slide").forEach((item => {
       gsap.to(item, {
         scale: 0.8,
-
         scrollTrigger: {
           trigger: item,
           start: "top 30%",
