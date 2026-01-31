@@ -1,18 +1,38 @@
-import { React, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 const Cards = () => {
-  const images = [
-    { src: "/caseStudies/6.jpg", height: "h-[80vh]" },
+  const imagesDesktop = [
     { src: "/caseStudies/2.jpg", height: "h-[80vh]" },
-    { src: "/caseStudies/3.jpg", height: "h-[80vh]" },
     { src: "/caseStudies/4.jpg", height: "h-[80vh]" },
-    { src: "/caseStudies/5.jpg", height: "h-[80vh]" },
-    { src: "/caseStudies/1.jpg", height: "h-[80vh]" },
+    { src: "/caseStudies/6.jpg", height: "h-[80vh]" },
   ];
+
+  const imagesMobile = [
+    { src: "/caseStudies/1.jpg", height: "h-[80vh]" },
+    { src: "/caseStudies/3.jpg", height: "h-[80vh]" },
+    { src: "/caseStudies/5.jpg", height: "h-[80vh]" },
+  ];
+
+  const [images, setImages] = useState(imagesDesktop);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setImages(imagesMobile);
+      } else {
+        setImages(imagesDesktop);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     gsap.utils.toArray(".bg-slide").forEach((item => {
       gsap.to(item, {
@@ -28,7 +48,6 @@ const Cards = () => {
       })
     }))
     return () => {
-
     }
   }, [])
 
@@ -38,27 +57,40 @@ const Cards = () => {
       {images.map((img, i) => (
         <div
           key={i}
+          className={`w-[115%] md:w-screen bg-slide sticky top-[10vh] rounded-2xl overflow-hidden ${img.height}`}
           style={{
             backgroundImage: `url(${img.src})`,
+            // backgroundSize: "cover",
+            backgroundSize: "100% 100%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
             fontFamily: "Montserrat, sans-serif",
           }}
-          className={`w-screen  bg-slide bg-cover bg-center flex items-end justify-center pb-4 rounded-2xl  sticky top-[10vh] md:py-10 ${img.height}`}
         >
-          <div className="bg-white w-[95%] rounded-lg flex flex-col px-4 gap-2 sm:flex-row sm:justify-between sm:px-2 py-4 sm:items-center h-fit">
-            <div className="font-semibold text-xl tracking-tighter">Project Name</div>
-            <div className="flex font-semibold gap-2">
-              <div className="bg-[#D8D8D8] text-[10px] sm:text-sm text-center py-2 px-2 sm:px-4 rounded-full">
-                Branding & Packaging
+          {/* Bottom overlay card */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[95%]">
+            <div className="bg-white rounded-lg flex flex-col px-4 gap-2 sm:flex-row sm:justify-between sm:px-2 py-4 sm:items-center">
+              <div className="font-semibold text-xl tracking-tighter">
+                Project Name
               </div>
-              <div className="bg-[#D8D8D8] text-[10px] sm:text-sm text-center py-2 px-2 sm:px-4 rounded-full">
-                Logo Design
+
+              <div className="flex font-semibold gap-2 flex-wrap">
+                <div className="bg-[#D8D8D8] text-[10px] sm:text-sm py-2 px-4 rounded-full">
+                  Branding & Packaging
+                </div>
+                <div className="bg-[#D8D8D8] text-[10px] sm:text-sm py-2 px-4 rounded-full">
+                  Logo Design
+                </div>
               </div>
-            </div>
-            <div className="bg-[#D8D8D8] h-fit w-fit p-2 rounded-full">
-              <ArrowUpRight />
+
+              <div className="bg-[#D8D8D8] p-2 rounded-full w-fit">
+                <ArrowUpRight />
+              </div>
             </div>
           </div>
         </div>
+
+
       ))}
 
     </div>

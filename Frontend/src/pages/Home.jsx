@@ -11,16 +11,15 @@ import TurtleBlogs from '../components/homePageSections/TurtleBlogs'
 const Home = () => {
 
   return (
-<div className='scroll-smooth overflow-x-clip' >
-<Section1/>
-<Services/>
-<CaseStudies/>
-<AiVideosSection/>
-<Clientele/>
-<Testimonials/>
-<TurtleBlogs/>
-
-</div>
+    <div className='scroll-smooth overflow-x-clip' >
+      <Section1 />
+      <Services />
+      <CaseStudies />
+      <AiVideosSection />
+      <Clientele />
+      <Testimonials />
+      <TurtleBlogs />
+    </div>
   )
 }
 

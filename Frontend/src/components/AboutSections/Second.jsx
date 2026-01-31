@@ -54,46 +54,29 @@ const Second = () => {
 
       {/* Infinite Oscillating Motion Carousel */}
       {/* Full-width, gapless, oscillating rail */}
+      {/* Infinite one-direction image rail */}
       <div className="w-screen overflow-hidden">
         <motion.div
           className="flex w-max"
-          // Move left by exactly one full track width, then reverse back
-          animate={{ x: [0, slideW * -slidesPerTrack - 10, 0] }}
+          animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 18, // total cycle time
-            ease: "easeInOut",
-            repeat: Infinity, // loop forever
-            repeatType: "reverse", // true oscillation (left <-> right)
-            repeatDelay: 0.8, // pause at each end
+            duration: 25, // speed (increase = slower)
+            ease: "linear",
+            repeat: Infinity,
           }}
           style={{ willChange: "transform" }}
         >
-          {/* Track A */}
-          <div className="flex">
-            {slides.map((_, i) => (
-              <img
-                ref={i === 0 ? slideRef : null}
-                key={`A-${i}`}
-                src={groupImage}
-                alt="carousel item"
-                className="w-screen h-[200px] sm:h-[260px] lg:h-[280px] object-cover flex-shrink-0"
-              />
-            ))}
-          </div>
-
-          {/* Track B (duplicate, ensures no gaps) */}
-          <div className="flex">
-            {slides.map((_, i) => (
-              <img
-                key={`B-${i}`}
-                src={groupImage}
-                alt="carousel item"
-                className="w-screen h-[200px] sm:h-[260px] lg:h-[280px] object-cover flex-shrink-0"
-              />
-            ))}
-          </div>
+          {[...slides, ...slides].map((_, i) => (
+            <img
+              key={i}
+              src={groupImage}
+              alt="carousel item"
+              className="w-screen h-[200px] sm:h-[260px] lg:h-[280px] object-cover flex-shrink-0"
+            />
+          ))}
         </motion.div>
       </div>
+
     </section>
   );
 };

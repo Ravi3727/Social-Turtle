@@ -8,13 +8,12 @@ import stroke1 from "../../assets/stroke1.png";
 
 const Third = () => {
   const items = [
-    { img: bulb, alt: "Idea to impact", caption: "Lorem ipsum dolor sit amet consectetur." },
-    { img: stock, alt: "Growth metrics", caption: "Lorem ipsum dolor sit amet consectetur." },
-    { img: turtle, alt: "Team at work", caption: "Lorem ipsum dolor sit amet consectetur." },
-    { img: samosa, alt: "Snack-friendly", caption: "Lorem ipsum dolor sit amet consectetur." },
+    { img: bulb, alt: "Idea to impact", caption: `Creative That Connects, We don't just make things look pretty—we make them work. Our designs and strategies speak to the right audience at the right time.` },
+    { img: stock, alt: "Growth metrics", caption: "Strategy + Soul Driven by data, guided by gut. We mix logic with emotion to keep it real" },
+    { img: turtle, alt: "Team at work", caption: `Team of Turtles, Not Tortoises We're quick, responsive, and on top of trends. Slow and steady? Not us.` },
+    { img: samosa, alt: "Snack-friendly", caption: "Built on Trust (and Snacks) Long-term bonds, last-minute wins, and lots of samosas in between." },
   ];
 
-  // ✅ No TypeScript here
   const trackRef = useRef(null);
   const [trackW, setTrackW] = useState(0);
 
@@ -53,36 +52,40 @@ const Third = () => {
         </p>
       </div>
 
-      {/* Mobile: oscillating single-row marquee */}
-      {/* Mobile: one-by-one infinite slider */}
-<div className="md:hidden max-w-sm mx-auto mt-10 sm:mt-12 lg:mt-16">
-  <div className="w-full overflow-hidden relative">
-    <motion.div
-      className="flex"
-      animate={{ x: [0, "-100%", "-200%", "-300%", "0%"] }}
-      transition={{
-        duration: 16, // total cycle
-        ease: "linear",
-        repeat: Infinity,
-      }}
-    >
-      {items.map((it, idx) => (
-        <div
-          key={idx}
-          className="flex-shrink-0 w-full flex flex-col items-center justify-center px-6"
-        >
-          <img src={it.img} alt={it.alt} className="h-32 w-auto object-contain" />
-          <p
-            className="mt-4 text-gray-700 text-sm text-center"
-            style={{ fontFamily: "Montserrat, sans-serif" }}
+      <div className="md:hidden max-w-sm mx-auto mt-10 sm:mt-12">
+        <div className="w-full overflow-hidden relative">
+          <motion.div
+            className="flex"
+            animate={{ x: ["0%", `-${items.length * 100}%`] }}
+            transition={{
+              duration: items.length * 4, // controls speed
+              ease: "linear",
+              repeat: Infinity,
+            }}
           >
-            {it.caption}
-          </p>
+            {[...items, ...items].map((it, idx) => (
+              <div
+                key={idx}
+                className="flex-shrink-0 w-full flex flex-col items-center justify-center px-6"
+              >
+                <img
+                  src={it.img}
+                  alt={it.alt}
+                  className="h-32 w-auto object-contain"
+                />
+                <p
+                  className="mt-4 text-gray-700 text-sm text-center"
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  {it.caption}
+                </p>
+              </div>
+            ))}
+          </motion.div>
         </div>
-      ))}
-    </motion.div>
-  </div>
-</div>
+      </div>
+
+
 
 
       {/* Tablet/Desktop: original grid */}
